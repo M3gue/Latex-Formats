@@ -1,0 +1,91 @@
+\documentclass[11pt]{article} % Tipo de documento y tamaño
+\usepackage[utf8]{inputenc }% Caracteres especiales
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel} % Idioma del documento
+\usepackage[letterpaper,top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry} % Márgenes
+\usepackage{graphicx} % Para insertar imágenes
+\usepackage{float} % Permite posicionar mejor las figuras y tablas
+\usepackage{ragged2e} % Para centrar y justificar
+\usepackage{url} % Para poner URL
+\usepackage{apacite} % Citar en estilo APA
+\usepackage{natbib} % Para aumentar los comandos a la hora de citar 
+\usepackage{enumerate} % Modificar las enumeraciones
+\usepackage{multirow} % Para unir columnas y filas
+\usepackage{tabularx} % Para hacer tablas que completen el largo de la página
+\usepackage{array} % Según la wiki de tabular x, este paquete es necesario para que tabularx funcione bien. Además, agrega nuevas opciones a tabular
+\usepackage{lmodern} % Cambia la fuente a una fuente vectorial, para que no haya problemas al reescalado
+\usepackage{setspace} % Para establecer el interlineado
+\usepackage{amsmath} % Mejora la escritura matemática
+\usepackage{amsthm} % Ayuda a definir estructuras similares a teoremas
+\usepackage{amssymb} % Añade símbolos matemáticos extra
+\usepackage{titlesec} % Modificar los estidos de las secciones, subsecciones y subsubsecciones
+%\usepackage{colortbl} % Color a las celdas de las tablas
+%\usepackage{xcolor} % Poder definir colores
+%\usepackage{longtable} % Para hacer tablas largas 
+%\usepackage{slashbox,pict2e} % Para dar un slash en las tablas. pict2e mejora la línea
+%\usepackage{cancel} % Poder cancelar en las ecuaciones matemáticas
+%\usepackage{multicol} % Añade distribución para hacer que todo el documento pueda ser a dos columnas.
+%\usepackage{caption} % Modifica el estilo del caption
+\usepackage[hidelinks, breaklinks=true]{hyperref} % Linkear las citas y los urls. Hidelinks elimina los cuadros que se hacen a los lados. breaklinks=true se usa para que separe en líneas lo títulos muy largos
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Modificación secciones
+
+\titleformat*{\section}{\large \bfseries \centering} % Da formato a \section
+\titlespacing{\section}{0cm}{0cm}{0cm} % Espacios de las secciones. El primero indica el espacio entre el borde del documento y el número. El segundo el espacio con el párrafo de arriba y el tercero el espacio con el párrafo de abajo
+%\titleformat*{\subsection}{\normalsize \bfseries \centering}
+%\titleformat*{\subsubsection}{\normalsize \bfseries \centering}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Modificación caption
+
+%\captionsetup{font=small,justification=raggedright,singlelinecheck=false} % Modifica el estilo de los caption
+%\captionsetup[figure]{name={Fig.},labelsep=period,labelfont={bf,it},textfont=it} % Modifica el nombre de las figuras y su separador
+%\captionsetup[table]{name={Tabla},labelsep=newline,labelfont={bf}} % Modifica el nombre de las figuras y su separador
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Entornos tablas
+
+%\renewcommand\tabularxcolumn[1]{>{\Centering}p{#1}} % Hace que el X de tabularx ahora esté centrado y no alineado a la izquierda
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X} % Crea el tipo Y que es como el X pero alineado a la izquierda
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Nuevos comandos
+
+%\newcommand{\R}[1][2]{\mathbb{R}^{#1}} % Comando para espeficifar espacios dimencionales
+%\newcommand{\Lagr}{\mathcal{L}} % Comando para escribir el símbolo de Lagrange 
+%\newcommand{\Cels}{^{\circ}\text{C}} % Comando para escribir el símbolo de Celsius
+%\newcommand{\U}{\mathcal{U}} % Comando para escribir el símbolo de Utilidad
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Nuevos entornos
+
+%\newenvironment{myquote} % Para que lo que esté en el entrorno myquote tenga sangría de 0.5in
+%{\list{}{\leftmargin=0.5in}\item[]}
+%{\endlist} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}	
+	\onehalfspacing % Modifica el interlineado
+	\setlength{\parskip}{\baselineskip} % Define el espacio entre párrafos
+	%\setlength{\parindent}{0.5in} % Define la sangría de los párrafos
+	
+	\noindent % Desactiva en el siguiente párrafo la sangría
+	\begin{tabularx}{\textwidth}{Y r}
+		\multirow{4}{*}{\includegraphics[scale=0.2]{Logo.jpg}} & MATERIA\\
+		& Miguel Ángel García García\\
+		& \today\\
+		& 1002329319\\ 		
+	\end{tabularx}
+
+	\vspace{15pt}
+			
+	\section*{Título}
+		
+	\noindent	
+	Hola 
+	
+%	\newpage
+%	\bibliographystyle{apacite}
+%	\urlstyle{same}
+%	\bibliography{bib.bib}
+%	\nocite{*}
+
+
+\end{document}

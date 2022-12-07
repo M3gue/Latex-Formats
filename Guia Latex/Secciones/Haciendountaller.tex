@@ -1,0 +1,646 @@
+	\section{Haciendo un taller}
+	
+	\subsection{Portada}
+	
+	\subsubsection{Portada con \texttt{maketitle}}
+	
+	Para hacer una portada con el comando \verb|\maketitle| debemos definir en el preámbulo tres parámetros: \verb|\title{titulo}|, donde definimos el título del documento, \verb|\author{autor}| donde definimos el nombre del autor y \verb|\date{fecha}|, donde definimos la fecha de creación del documento. Una vez tenemos definidos estos parámetros, cuando estemos dentro del cuerpo del documento debemos escribir \verb|\maketitle|, lo que automáticamente creará una portada. Dependiendo del tipo de documento la portada puede cambiar. Por ejemplo, en la clase \texttt{book} o \texttt{report} el título aparecerá al principio y en una página aparte. En cambio, con la clase \texttt{article} el título aparecerá en la parte superior de la primera página del documento. Si queremos que en la clase \texttt{article} aparezca el título en una página aparte, debemos especificar la opción \texttt{titlepage}, que está desactivada por defecto. El tamaño de letra del título es \verb|\LARGE|, pero puede ser cambiada dentro de \verb|\title{titulo}|. Veamos unos ejemplos:
+	
+	\textbf{Ejemplo 1}
+	
+	\begin{center}
+		\colorbox{light-yellow}{
+			\begin{minipage}{\textwidth}
+				\centering
+				\vspace{50pt}
+				{\Huge Titulo del documento}\\
+				\vspace{25pt}
+				{\large Autor del documento}\\
+				\vspace{12.5pt}
+				{\large \today}\\
+				\vspace{40pt}
+			\end{minipage}
+		}
+	\end{center}
+
+	\begin{myquote}
+		\begin{lstlisting}
+\documentclass{article}
+
+\title{\Huge Titulo del documento}
+\author{Autor del documento}
+\date{\today}
+
+\begin{document}
+	\maketitle
+\end{document}
+		\end{lstlisting}
+	\end{myquote}
+	
+	
+	Como vemos en el ejemplo, como fecha se puso \verb|\today|. Este comando define la fecha del día en que se compila el documento.
+	
+	\subsubsection{Portada con entorno \textit{titlepage}}
+	
+	Si no nos gusta la portada que nos genera Latex podemos hacer una a nuestro gusto. Esto se puede lograr con el entorno \textit{titlepage}. Dentro de este entorno podemos escribir como queremos que puede ser la portada. Veamos un ejemplo:
+	
+	\textbf{Ejemplo 1}
+	
+	\begin{center}
+		\colorbox{light-yellow}{
+			\begin{minipage}{\textwidth}
+				\centering
+				\vspace{50pt}
+				{\scshape\Huge \textbf{Universidad}}
+				\vspace{100pt}
+				
+				{\scshape\huge Proyecto final}
+				\vspace{80pt}
+				
+				{\scshape\Large Hecho por:}
+				\vspace{10pt} 
+				
+				{\large Autor}
+				\vspace{25pt}
+				
+				{\large \today}
+				\vspace{50pt}
+			\end{minipage}
+		}
+	\end{center}
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\documentclass{article}
+
+\begin{document}
+	\begin{titlepage}
+		\centering
+		\vspace{50pt}
+		{\scshape\Huge \textbf{Universidad}}
+		\vspace{100pt}
+		
+		{\scshape\huge Proyecto final}
+		\vspace{80pt}
+		
+		{\scshape\Large Hecho por:}
+		\vspace{10pt} 
+		
+		{\large Autor}
+		\vspace{22pt}
+		
+		{\large \today}
+		\vspace{50pt}
+	\end{titlepage}
+\end{document}
+		\end{lstlisting}
+	\end{myquote}
+	
+	
+	\subsection{Listas}
+	
+	\subsubsection{Entorno \textsl{itemize}}
+	
+	Para crear una lista de elementos se debe usar el entorno \verb|\begin{itemize}|. El esquema de este entorno es el siguiente:
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\begin{itemize}
+	\item Texto
+	\item ...
+	...
+\end{itemize}
+		\end{lstlisting}
+	\end{myquote}
+	
+	
+	Enfrente de cada \verb|\item| escribimos el texto que va a estar listado. Veamos un ejemplo:
+	
+	\textbf{Ejemplo 1}
+	
+	\begin{itemize}
+		\item Item 1
+		\item Item 2
+		\item Item 3
+	\end{itemize}
+	
+	
+	De igual manera podemos crear un ítem dentro de los ítems:
+	
+	\textbf{Ejemplo 2}
+	
+	\begin{itemize}
+		\item Item 1
+		\item Item 2		
+		\begin{itemize}
+			\item Item 2.1
+			\item Item 2.1
+		\end{itemize}		
+		\item Item 3
+	\end{itemize}
+	
+
+	\begin{myquote}
+		\begin{lstlisting}
+\begin{itemize}
+	\item Item 1
+	\item Item 2		
+		\begin{itemize}
+			\item Item 2.1
+			\item Item 2.1
+		\end{itemize}
+	\item Item 3
+\end{itemize
+		\end{lstlisting}
+	\end{myquote}
+	
+	
+	\subsubsection{Cambio de enumeración individual \textsl{itemize}}
+	
+	Si no nos gustan los cuadrados que viene por defecto podemos cambiar individualmente la notación de cada ítem si ponemos después del \verb|\item| unos corchetes cuadrados indicando lo que queremos que se muestre:
+	
+	\textbf{Ejemplo 1}
+		
+	\begin{itemize}
+		\item[1.] Item 1
+		\item[A-] Item 2
+		\item[i)] Item 3
+	\end{itemize}
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\begin{itemize}
+	\item[1.] Item 1
+	\item[A-] Item 2
+	\item[i)] Item 3
+\end{itemize}
+		\end{lstlisting}
+	\end{myquote}
+	
+	
+	\subsubsection{Entorno \textsl{enumerate}}
+	
+	El entorno \verb|enumerate| funciona igual que el \verb|itemize|, con la única diferencia de que este entorno enumera los ítems, y no los lista. Esto quiere decir que hace una lista numérica con todos los ítems. Su formato es igual al del entorno \verb|itemize|:
+	
+	\textbf{Ejemplo 1}
+	
+	\begin{enumerate}
+		\item Item 1
+		\item Item 2
+		\item Item 3
+	\end{enumerate}
+
+	\begin{myquote}
+		\begin{lstlisting}
+\begin{enumerate}
+	\item Item 1
+	\item Item 2
+	\item Item 3
+\end{enumerate}
+		\end{lstlisting}
+	\end{myquote}
+	
+	
+	También se pueden crear \verb|enumerate| dentro de otros, y combinarlas con \verb|itemize|. Veamos:
+	
+	\textbf{Ejemplo 2}
+	
+	\begin{enumerate}
+		\item Item 1
+		\item Item 2
+		\begin{itemize}
+			\item Item 2.1
+			\item Item 2.2
+			\begin{itemize}
+				\item Item 2.2.1
+				\item Item 2.2.2
+			\end{itemize}
+			\item Item 2.3
+			\item Item 2.4
+			\begin{enumerate}
+				\item Item 2.4.1
+				\item Item 2.4.2
+			\end{enumerate}
+		\end{itemize}
+		\item Item 3
+		\item Item 4
+	\end{enumerate}
+
+	\begin{myquote}
+		\begin{lstlisting}
+\begin{enumerate}
+	\item Item 1
+	\item Item 2
+		\begin{itemize}
+			\item Item 2.1
+			\item Item 2.2
+				\begin{itemize}
+					\item Item 2.2.1
+					\item Item 2.2.2
+				\end{itemize}
+			\item Item 2.3
+			\item Item 2.4
+				\begin{enumerate}
+					\item Item 2.4.1
+					\item Item 2.4.2
+				\end{enumerate}
+			\end{itemize}
+	\item Item 3
+	\item Item 4
+\end{enumerate}
+		\end{lstlisting}
+	\end{myquote}
+	
+
+	\subsubsection{Cambio de enumeración individual \textsl{enumerate}}	
+	
+	Al igual que con el entorno \verb|itemize| podemos cambiar individualmente la enumeración de la lista.
+	
+	\textbf{Ejemplo 1}
+	
+	\begin{enumerate}
+		\item Item 1
+		\item Item 2
+		\item[I)] Item 3
+		\item[a:] Item 4
+		\item Item 5
+		\item Item 6
+	\end{enumerate}
+
+	\begin{myquote}
+		\begin{lstlisting}
+\begin{enumerate}
+	\item Item 1
+	\item Item 2
+	\item[I)] Item 3
+	\item[a:] Item 4
+	\item Item 5
+	\item Item 6
+\end{enumerate}
+		\end{lstlisting}
+	\end{myquote}
+		
+	
+	\subsubsection{Cambio de enumeración global}
+	
+	Si queremos modificar completamente la forma como se numera debemos usar el paquete \verb|\usepackage{enumerate}|. Este paquete nos permite seleccionar que tipo de enumeración queremos para el entorno \verb|enumerate|. Para modificar esto tenemos escoger el tipo de enumeración después de crear el entorno: \verb|\begin{enumerate}[enumeracion]|. En la casilla \verb|enumeracion| escribimos como queremos que sea la secuencia de la enumeración. Veamos unos ejemplos:
+	
+	\textbf{Ejemplo 1}
+	
+	\begin{enumerate}[a:]
+		\item Item 1
+		\item Item 2
+		\begin{enumerate}[1-]
+			\item Item 1
+			\item Item 2
+			\item Item 3
+		\end{enumerate}
+		\item Item 3
+		\item Item 4
+	\end{enumerate}
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\begin{enumerate}[a:]
+	\item Item 1
+	\item Item 2
+		\begin{enumerate}[1-]
+			\item Item 1
+			\item Item 2
+			\item Item 3
+		\end{enumerate}
+	\item Item 3
+	\item Item 4
+\end{enumerate}
+		\end{lstlisting}
+	\end{myquote}
+	
+	\textbf{Ejemplo 2}
+	
+	\begin{enumerate}[I)]
+		\item Item 1
+		\item Item 2
+		\begin{enumerate}[$\Delta$+]
+			\item Item 1
+			\item Item 2
+			\item Item 3
+		\end{enumerate}
+		\item Item 3
+		\item Item 4
+	\end{enumerate}
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\begin{enumerate}[I)]
+	\item Item 1
+	\item Item 2
+		\begin{enumerate}[$\Delta$+]
+			\item Item 1
+			\item Item 2
+			\item Item 3
+		\end{enumerate}
+	\item Item 3
+	\item Item 4
+\end{enumerate
+		\end{lstlisting}
+	\end{myquote}
+	
+	\subsection{Citación y bibliografía}
+	
+	Para citar y referenciar  vamos a usar dos paquetes. El primero, \texttt{apacite} que nos permite hacer referencias en apa, y \texttt{natbib}, que nos amplía las formas de citar en apa. Aparte de esto se va a usar un archivo \texttt{bib.bib} donde se almacenarán las citas.
+	
+	\subsubsection{Archivo \texttt{bib.bib}}
+	
+	Para almacenar las citas vamos a crear un archivo llamado \texttt{bib} (u otro nombre) con la extensión \texttt{.bib}. En este archivo se van a almacenar las citas, que posteriormente se vayan utilizando en el texto. Las citas que estén dentro de este documento deben cumplir un formato, y deben llevar ciertos campos dependiendo de su tipo. Se recomienda que este archivo se guarde en la raíz de la carpeta del trabajo, aunque no es completamente necesario. Veamos un ejemplo del archivo:
+	
+	Si queremos citar un capítulo de una revista, los campos imprescindibles son: nombre del autor, año de publicación, nombre del artículo, nombre de la revista, volumen y número de la revista y las páginas que componen el artículo. Cuando tengamos esa información la debemos adjuntar en el archivo \texttt{bib.bib} con el siguiente formato:
+	
+	\begin{myquote}
+		\begin{lstlisting}
+@article{ref,
+	author = {Apellido, Nombre Nombre},
+	journal = {Nombre de la revista},
+	number = {Num},
+	pages = {pag},
+	title = {Titulo del articulo},
+	volume  = {vol},
+	year = {2020}
+}
+		\end{lstlisting}
+	\end{myquote}
+	
+	El campo \texttt{ref} se refiere a un nombre que le asignamos a la cita para llamarla cuando lo necesitemos en el cuerpo del archivo. Es importante asignarle a cada cita un nombre diferente.
+	
+	Como vemos en el ejemplo, esta es la organización básica de un artículo de revista. El nombre que aparece después del \textit{@} es el tipo de cita. Dependiendo del tipo, debemos poner más o menos campos. A continuación, se presentará una tabla con los tipos más comunes de citas y los campos que se sugieren deben contener:
+	
+	
+	Se mancarán con una \texttt{x} los campos que deben incluir
+	\begin{longtable}{|>{\ttfamily}l|c|c|c|c|c|c|}
+		\hline
+		\backslashbox{\textrm{Campos}}{\textrm{Tipo}} & article & magazine & newspaper & book & misc & misc (pag. web)\\
+		\hline
+		address & & & & x & x &\\
+		\hline
+		author & x & x & x & x & x & x\\
+		\hline
+		doi & x & x & x & x & x &\\
+		\hline
+		edition & & & & x & x &\\
+		\hline
+		editor & x & x & x & x & x &\\
+		\hline
+		journal & x & x & x & & &\\
+		\hline
+		number & x & x & x & x & x &\\
+		\hline
+		pages & x & x & x & x & x &\\
+		\hline
+		publisher & & & & x & x &\\
+		\hline
+		title & x & x & x & x & x & x\\
+		\hline
+		translator & x & x & x & x & &\\
+		\hline
+		url & x & x & x & x & x & x\\
+		\hline
+		urldate & x & x & x & x & x & x\\
+		\hline
+		volume & x & x & x & x & x &\\
+		\hline
+		year & x & x & x & x & x & x\\
+		\hline				
+	\end{longtable}
+
+	La categoría \texttt{misc} se usa para todo lo que no cabe en alguna categoría. En caso de que se quiera citar una página web se debe usar la categoría \texttt{misc} y se deben llenar los campos que se sugirieron en el cuadro como \texttt{misc (pag. web)}.
+	
+	Es importante aclarar que no es necesario que se llenen todos campos de para que se haga una cita, pero entre más datos se tenga, mejor será la cita. Si no se completa alguno de los casos Latex automáticamente completará el campo con un \texttt{s.f.} en el caso de las fechas, y su equivalente a cualquiera de los otros campos.
+	
+	\textbf{Ejemplo 1}
+	
+	Gomez, J. (2020). Titulo. Descargado 25/02020, de www.titulo.com	
+		\begin{myquote}
+			\begin{lstlisting}
+@misc{app,
+author = {Gomez, Juan},
+title = {Titulo},
+url  = {www.titulo.com},
+urldate = {25/02020},
+year = {2020}
+}
+			\end{lstlisting}
+		\end{myquote}
+	
+	\textbf{Ejemplo 2}
+	
+	Gomez, J. (s.f.). Titulo. Descargado 25/02020, de www.titulo.com	
+	\begin{myquote}
+		\begin{lstlisting}
+@misc{app,
+author = {Gomez, Juan},
+title = {Titulo},
+url  = {www.titulo.com},
+urldate = {25/02020},
+}
+		\end{lstlisting}
+	\end{myquote}
+	
+	\textbf{Ejemplo 3}
+	
+	Titulo.(s.f.). Descargado 25/02020, de www.titulo.com	
+	\begin{myquote}
+		\begin{lstlisting}
+@misc{app,
+title = {Titulo},
+url  = {www.titulo.com},
+urldate = {25/02020},
+}
+		\end{lstlisting}
+	\end{myquote}
+
+	\subsubsection{Referencias}
+	
+	Cuando tengamos todas nuestras citas en el archivo \texttt{bib.bib}, podremos empezar a citar en el cuerpo del documento. Para esto debemos escribir en el cuerpo del trabajo dos comandos: \verb|\bibliographystyle{apacite}| y  \verb|\bibliography{bib.bib}|. El primero señalaremos el estilo de citación, que en este caso es \texttt{apa}. En el segundo comando señalamos dónde se encuentra el documento \texttt{bib.bib} o el archivo donde se encuentras las bibliografías. Si se escogió otro nombre para el documento bibliográfico diferente de \texttt{bib.bib}, se debe modificar el interior de los corchetes con el respectivo nombre o ruta del archivo de bibliografía, por ejemplo \verb|\bibliography{ref.bib}|.
+	
+	Cuando tengamos lo anterior listo, podemos empezar a citar. Para hacer esto tenemos que usar uno de los comandos \verb|\cite| que se van a presentar a continuación. Dependiendo del que se use se va a mostrar más o menos información. 
+	
+	\begin{tabularx}{\textwidth}{|c|X|X|}
+		\hline
+		Comando & Descripción & Ejemplo\\
+		\hline
+		\multirow{2}{*}{\verb|\citet{ref}|} & \multirow{2}{*}{Citación textual} & Apellido (año)\\
+		& & Apellido y cols., (año)\\
+		\hline
+		\multirow{2}{*}{\verb|\citep{ref}|} & \multirow{2}{*}{Citación con paréntesis} & (Apellido, año)\\
+		& & (Apellido y cols., año)\\
+		\hline
+		\multirow{2}{*}{\verb|\citealp{ref}|} & \multirow{2}{150pt}{Igual que \verb|\citep| pero sin usar paréntesis} & Apellido, año\\
+		& & Apellido y cols., año\\
+		\hline
+		\verb|\citet*{ref}| & Igual que \verb|\citet| pero si son muchos autores, lo muestra todos & Apellido, Apellido, y Apellido (año)\\
+		\hline
+		\verb|\citep*{ref}| & Igual que \verb|\citep| pero si son muchos autores, lo muestra todos & (Apellido, Apellido, y Apellido, año)\\
+		\hline
+		\verb|\citeauthor{ref}| & Solo cita el autor & Apellido y cols.\\
+		\hline
+		\verb|\citeyear{ref}| & Solo cita el año & año\\
+		\hline
+		\verb|\citeyearpar{ref}| & Solo cita el año con paréntesis & (año)\\
+		\hline
+	\end{tabularx}
+
+	Para citar en el texto debemos usar una de las anteriores opciones, reemplazando el \texttt{{ref}} por el nombre que le asignamos a la referencia. Veamos un ejemplo teniendo en cuenta la siguiente referencia agregada al archivo \texttt{bib.bib}:
+	
+	\begin{myquote}
+		\begin{lstlisting}
+@article{Inhumanas,
+author = {Cruz Kronfly, Fernando},
+journal = {Cuadernos de {A}dministracion},
+number = {27},
+pages = {14-22},
+title = {El mundo del trabajo y las organizaciones desde la perspectiva de las practicas inhumanas.},
+volume  = {18},
+year = {2002}
+}
+		\end{lstlisting}
+	\end{myquote}	
+	
+	\textbf{Ejemplo 1}
+	
+	Por otro lado, es importante siempre tener esto en cuenta, ya que en las empresas debe existir en cierta medida un poco de deshumanización, ya que es necesario marcar la diferencia entre los altos y los bajos mandos (Krofly, 2002, p. 21). Esta diferenciación debe hacerse con humanidad ante todo. Como menciona Kronfly, ``existen dirigentes auténticos que cuya autoridad sobre los demás resulta inobjetable debido a la transparencia de sus fundamentos y la legitimidad aceptación por parte de los dirigidos'' (2002, p. 21).
+		
+	\begin{myquote}
+	 	\begin{lstlisting}
+Por otro lado, es importante siempre tener esto en cuenta, ya que en las empresas debe existir en cierta medida un poco de deshumanizacion, ya que es necesario marcar la diferencia entre los altos y los bajos mandos \citep[p. 21]{Inhumanas}. Esta diferenciacion debe hacerse con humanidad ante todo. Como menciona Kronfly, ``existen dirigentes autenticos que cuya autoridad sobre los demas resulta inobjetable debido a la transparencia de sus fundamentos y la legitimidad aceptacion por parte de los dirigidos'' \citeyearpar[p. 21]{Inhumanas}.
+	 	\end{lstlisting}
+	\end{myquote} 
+ 
+	\subsubsection{Bilbiografía}
+	
+	\subsubsection{Sangría para citas (\texttt{quote})}
+	
+	\subsubsection{Paquete \texttt{hyperref}}
+	
+	Este paquete nos permite linkear las partes de nuestro documento 
+	
+	Con \verb|\url{URL}| insertamos el URL, y con \verb|\href{URL}{text}| insertamos un URL con un nombre distinto 
+	
+	\subsection{Identación o sangría}
+	
+	\subsubsection{Identación para párrafos}
+	
+	\subsection{Formato secciones, subsecciones y subsubsecciones}
+		
+	Para dar formato a los párrafos se debe usar el paquete \verb|\usepackage{titlesec}|. Este permite establecer el formato de las secciones, subsecciones y subsubsecciones. En el preámbulo se pueden escribir dos funciones: \verb|\titleformat*| o \verb|\titleformat| para modificar los formatos.
+	
+	\subsubsection{titleformat*}
+	
+	Empecemos con \verb|\titleformat*{comando}{formato}| Este comando solo cambia lo necesario. Este tiene dos parámetros: \verb|{comando}| y \verb|{formato}|. \verb|{comando}| se refiere al comando que se va a modificar. Puede ser \verb|\section|, \verb|\subsection| o \verb|\subsubsection|. Finalmente \verb|{formato}| se refiere al formato que se le va a dar. Pueden cambiarse los tipos de letra, colores, entro otros:
+	
+	\textbf{Ejemplo 1}
+	
+	\noindent
+	{\large \textbf{1. Titulo}}	
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\titleformat*{\section}{\large \bfseries} 
+\section{Titulo}
+		\end{lstlisting}
+	\end{myquote} 
+
+	\textbf{Ejemplo 2}	
+	
+	\noindent
+	\begin{center}
+		{\LARGE \ttfamily {\color{red}1. Titulo}}
+	\end{center}
+	
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\titleformat*{\section}{\LARGE \ttfamily \centering \color{red}}
+\section{Titulo}
+		\end{lstlisting}
+	\end{myquote} 
+	
+	\subsubsection{titleformat}
+	
+	Este formato funciona igual que el anterior, pero tiene más opciones: \verb|\titleformat{comando}| \verb|[forma]{formato}{label}{paso}{despues}{antes}|. En la opción \verb|{comando}| se escribe el comando a modificar, que puede ser \verb|\section|, \verb|\subsection| o \verb|\subsubsection|. En la opción \verb|[forma]| se selecciona el formato de la sección. Se recomienda poner siempre \verb|block|. La opción \verb|{formato}| se usa para establecer el formato como en el punto anterior. En la opción \verb|{label}| se pone la enumeración que se quiere para las secciones. Puede ser en estilo con números romanos usando \verb|\Roman{\section}| o normal usando \verb|\arabic{\section}| para enumerar con número. La opción \verb|{paso}| es la separación entre el \verb|label| y el texto. La opción \verb|{antes}| permite poner comando adicionales, pero se recomienda dejarla en blanco.
+	
+	\textbf{Ejemplo 1}	
+	
+	\noindent
+	{\large \bfseries{\color{blue}I.\hspace{2cm}Titulo}}
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\titleformat{\section}[block]{\large \bfseries \color{blue}}{\Roman{section}.}{2cm}{} 
+\section{Titulo}
+		\end{lstlisting}
+	\end{myquote} 
+
+	\textbf{Ejemplo 2}	
+	
+	\noindent
+	{\LARGE \bfseries{1.\hspace{1cm}Titulo}}
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\titleformat{\section}[block]{\LARGE \bfseries}{\arabic{section}.}{1cm}{}
+\section{Titulo}
+		\end{lstlisting}
+	\end{myquote} 
+
+	\subsubsection{titlespacing}
+	Este formato se usa para modificar los espacios de las secciones, subsecciones y subsubsecciones. Tenemos a \verb|\titlespacing{comando}{izquierda}{antes}{despues}|. La opción \verb|{comando}| se usa para poner el comando a modificar, como \verb|\section|, \verb|\subsection| o \verb|\subsubsection|. La opción \verb|{izquierda}| modifica el margen izquierdo. La opción \verb|antes| modifica el espacio vertical del texto antes de la sección y la sección y la opción \verb|{despues}| modifica el espacio entre la sección y el texto a continuación.
+	
+	Para los ejemplos se va a utilizar el paquete \verb|\usepackage{lipsum}|, que permite poner párrafos de texto de ejemplo.
+	
+	\textbf{Ejemplo 1}	
+		
+	\lipsum[4]	
+	
+	\noindent
+	{\large \bfseries{1. Titulo}}
+	
+	\lipsum[2]
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\titleformat*{\section}{\large \bfseries}
+\titlespacing{\section}{0cm}{0cm}{0cm}
+
+\lipsum[4]
+
+\section{Titulo}
+
+\lipsum[2]
+		\end{lstlisting}
+	\end{myquote} 
+	
+	\textbf{Ejemplo 2}		
+	
+	\lipsum[4]	
+	\vspace{2cm}
+	
+	\noindent
+	\hspace{3cm}{\large \bfseries{1. Titulo}}
+	\vspace{1cm}
+	
+	\lipsum[2]
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\titleformat*{\section}{\large \bfseries}
+\titlespacing{\section}{3cm}{2cm}{1cm}
+			
+\lipsum[4]
+			
+\section{Titulo}
+
+\lipsum[2]
+		\end{lstlisting}
+	\end{myquote} 
+
+	
+	

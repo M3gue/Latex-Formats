@@ -1,0 +1,1114 @@
+	\section{Tablas}	
+
+\subsection{Creación de tablas}
+
+El formato básico para la creación de una tabla usando el entorno \verb|tabular| es:
+
+\begin{myquote}
+	\begin{lstlisting}
+\begin{tabular}{columnas}
+	Columna 1 & Columna 2 & etc...\\
+	...
+	Columna 1 & Columna 2 & etc...\\
+	\hline
+	Columna 1 & Columna 2 & etc...\\
+	...
+\end{tabular}				
+	\end{lstlisting}			
+\end{myquote}
+
+
+Las columnas se escriben indicando la alineación de estas. Por ejemplo, si se quieren dos columnas alineadas a la izquierda, se escribe \verb|{l l}|, y si se quieren tres columnas, donde la primera se alinee al centro y las otras dos a la derecha se escribe \verb|{c r r}|. Si se quieren separar las columnas por líneas verticales se separas las columnas por un signo \verb+|+, por ejemplo, si se quieren separar dos columnas por una línea se escribe \verb+{c | c}+, y si también se quieren crear las líneas exteriores de estas mismas dos columnas se escribe \verb+{| c | c |}+. Finalmente, para hacer líneas verticales escribimos entre dos columnas el comando \verb|\hline|
+
+\textbf{Ejemplo 1}
+
+\begin{center}
+	\begin{tabular}{|l|c|r|}		
+		\hline	
+		Columna 1 & Columna 2 & Columna 3\\	
+		\hline			
+		TextoTextoTexto & TextoTextoTexto & TextoTextoTexto\\	
+		\hline		
+	\end{tabular}
+\end{center}	
+
+
+\begin{myquote}				
+	\begin{lstlisting}
+\begin{tabular}{|l|c|r|}		
+	\hline	
+	Columna 1 & Columna 2 & Colomna 3\\	
+	\hline	
+	TextoTextoTexto &TextoTextoTexto &TextoTextoTexto\\	
+	\hline		
+\end{tabular}				
+	\end{lstlisting}	
+\end{myquote}
+
+
+Se pueden poner doble y triple las líneas que separan tanto a las columnas como a las filas:\\
+
+\textbf{Ejemplo 2}
+
+\begin{center}
+	\begin{tabular}{r||r|||r}			
+		Columna 1 & Columna 2 & Columna 3\\	
+		\hline			
+		TextoTextoTexto & TextoTextoTexto & TextoTextoTexto\\					
+	\end{tabular}
+\end{center}	
+
+
+\begin{myquote}
+	\begin{lstlisting}
+\begin{tabular}{r||r|||r}			
+	Columna 1 & Columna 2 & Columna 3\\	
+	\hline			
+	TextoTextoTexto &TextoTextoTexto &TextoTextoTexto\\
+\end{tabular}			
+	\end{lstlisting}			
+\end{myquote}
+
+
+\textbf{Ejemplo 3}
+
+\begin{center}
+	\begin{tabular}{||c||c||}	
+		\hline		
+		Columna 1 & Columna 2\\	
+		\hline
+		\hline			
+		TextoTextoTexto & TextoTextoTexto\\	
+		\hline			
+		TextoTextoTexto & TextoTextoTexto\\	
+		\hline			
+		TextoTextoTexto & TextoTextoTexto\\	
+		\hline				
+	\end{tabular}
+\end{center}	
+
+
+\begin{myquote}
+	\begin{lstlisting}
+\begin{tabular}{||c||c||}	
+	\hline		
+	Columna 1 & Columna 2\\	
+	\hline	
+	\hline		
+	TextoTextoTexto & TextoTextoTexto\\	
+	\hline			
+	TextoTextoTexto & TextoTextoTexto\\	
+	\hline			
+	TextoTextoTexto & TextoTextoTexto\\	
+	\hline				
+\end{tabular}			
+	\end{lstlisting}			
+\end{myquote}
+
+
+\subsection{Tamaño de columnas}	
+
+Cabe recalcar que en las tablas se puede establecer el tamaño de las columnas. En la configuración \texttt{columnas} se debe agregar \texttt{p{tamaño}}, con el tamaño que se quiera.
+
+\textbf{Ejemplo 1}
+
+\begin{center}
+	\begin{tabular}{|p{80pt}|p{200pt}|}
+		\hline
+		Columna 1 & Columna 2\\
+		\hline
+	\end{tabular}
+\end{center}	
+
+\begin{myquote}
+	\begin{lstlisting}
+\begin{tabular}{|p{80pt}|p{200pt}|}
+	\hline
+	Columna 1 & Columna 2\\
+	\hline
+\end{tabular}		
+	\end{lstlisting}
+\end{myquote}
+
+\textbf{Ejemplo 2}
+
+\begin{center}
+	\begin{tabular}{|p{300pt}|p{150pt}|}
+		\hline
+		Columna 1 & Columna 2\\
+		\hline
+	\end{tabular}
+\end{center}	
+
+\begin{myquote}
+	\begin{lstlisting}
+\begin{tabular}{|p{300pt}|p{150pt}|}
+	\hline
+	Columna 1 & Columna 2\\
+	\hline
+\end{tabular}		
+	\end{lstlisting}
+\end{myquote}
+
+\subsection{Agrupación de filas}
+
+Para realizar esto se necesita el paquete \verb|\usepackage{multirow}|. Para agrupar una fila se emplea el comando \verb|\multirow{filas}{tamaño}{texto}|. En el apartado \verb|fila| se seleccionan cuantas filas se quieren agrupar. En \verb|tamaño| se escoge el tamaño que va a tener la fila agrupada. Se sugiere poner un asterisco \verb|*| para que ajuste el tamaño de acuerdo con las otras tablas. Finalmente, en el apartado \verb|texto| pone el texto que va a contener la fila agrupada. Veamos ejemplos:
+
+\textbf{Ejemplo 1}
+
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		Columna 1 & Columna 2\\
+		\hline
+		\multirow{2}{*}{Texto} & Texto\\
+		\hline
+		& Texto\\
+		& Texto\\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{myquote}
+	\begin{lstlisting}
+\begin{tabular}{|c|c|}
+	\hline
+	Columna 1 & Columna 2\\
+	\hline
+	\multirow{2}{*}{Texto} & Texto\\
+	\hline
+	& Texto\\
+	& Texto\\
+	\hline
+\end{tabular}		
+	\end{lstlisting}			
+\end{myquote}
+
+
+Como vemos, no podemos hacer un \verb|\hline| porque es una línea horizontal tal que va desde el inicio hasta el final de la tabla. Para solucionar esto podemos emplear el \verb|\cline{columna1-columna2}|, donde seleccionamos una columna inicial \verb|columna1| y una columna final \verb|columna2| para trazar una línea. La línea se traza desde el inicio de la columna inicial \verb|columna1| hasta el final de la columna final \verb|columna2|. Veamos:
+
+\textbf{Ejemplo 2}
+
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		Columna 1 & Columna 2\\
+		\hline
+		\multirow{2}{*}{Texto} & Texto\\
+		\cline{2-2}
+		& Texto\\ 
+		\cline{2-2}
+		& Texto\\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{myquote}
+	\begin{lstlisting}
+\begin{tabular}{|c|c|}
+	\hline
+	Columna 1 & Columna 2\\
+	\hline
+	\multirow{2}{*}{Texto} & Texto\\
+	\cline{2-2}
+	& Texto\\ 
+	\cline{2-2}
+	& Texto\\
+	\hline
+\end{tabular}		
+	\end{lstlisting}			
+\end{myquote}
+
+
+Como vemos en el ejemplo, se hicieron dos líneas, desde el inicio de la columna 2 hasta el final de la columna 2. Veamos otro ejemplo:
+
+\textbf{Ejemplo 3}
+
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Columna 1 & Columna 2 & Columna 3\\
+		\hline
+		\multirow{5}{*}{} & \multirow{5}{*}{} & \multirow{5}{*}{}\\
+		\cline{1-1} \cline{3-3}
+		& &\\ 
+		\cline{1-2}
+		& &\\
+		\cline{2-3}
+		& &\\
+		\cline{3-3}
+		& &\\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{myquote}
+	\begin{lstlisting}
+\begin{tabular}{|c|c|c|}
+	\hline
+	Columna 1 & Columna 2 & Columna 3\\
+	\hline
+	\multirow{5}{*}{} & \multirow{5}{*}{} & \multirow{5}{*}{}\\        
+	\cline{1-1} \cline{3-3}
+	& &\\ 
+	\cline{1-2}
+	& &\\
+	\cline{2-3}
+	& &\\
+	\cline{3-3}
+	& &\\
+	\hline
+\end{tabular}		
+	\end{lstlisting}			
+\end{myquote}
+
+
+\subsection{Agrupación de columnas}
+
+Para agrupar una columna se emplea el comando \verb|\multicolumn{columnas}{posición}{texto}|. En el apartado \verb|columnas| se seleccionan cuántas columnas se desean agrupar. En \verb|posición| se escoge la posición del texto en la columna, y en \verb|texto| se inserta el texto que irá dentro de la columna. Veamos ejemplos:
+
+\textbf{Ejemplo 1}
+
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		Columna 1 & Columna 2\\
+		\hline
+		Texto & Texto\\
+		\hline
+		\multicolumn{2}{|c|}{Texto}\\
+		\hline
+		Texto & Texto\\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{myquote}
+	\begin{lstlisting}
+\begin{tabular}{|c|c|}
+	\hline
+	Columna 1 & Columna 2\\
+	\hline
+	Texto & Texto\\
+	\hline
+	\multicolumn{2}{|c|}{Texto}\\
+	\hline
+	Texto & Texto\\
+	\hline
+\end{tabular}		
+	\end{lstlisting}			
+\end{myquote}
+
+
+
+\textbf{Ejemplo 2}
+
+\begin{center}	
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Columna 1 & Columna 2 & Columna 3\\
+		\hline
+		Texto & \multicolumn{2}{c|}{Texto}\\
+		\hline
+		\multicolumn{3}{|l|}{Texto}\\
+		\hline
+		\multicolumn{3}{|c|}{Texto}\\
+		\hline
+		\multicolumn{3}{|r|}{Texto}\\
+		\hline
+		\multicolumn{2}{|c|}{Texto} & Texto\\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{myquote}
+	\begin{lstlisting}
+\begin{tabular}{|c|c|c|}
+	\hline
+	Columna 1 & Columna 2 & Columna 3\\
+	\hline
+	Texto & \multicolumn{2}{c|}{Texto}\\
+	\hline
+	\multicolumn{3}{|l|}{Texto}\\
+	\hline
+	\multicolumn{3}{|c|}{Texto}\\
+	\hline
+	\multicolumn{3}{|r|}{Texto}\\
+	\hline
+	\multicolumn{2}{|c|}{Texto} & Texto\\
+	\hline
+\end{tabular}		
+	\end{lstlisting}			
+\end{myquote}
+
+
+\subsection{Color en las tablas}
+
+Para colorear las tablas debemos usar los paquetes \verb|\usepackage{colortbl}| y\\ \verb|\usepackage{array}|. Aquí también se pueden usar los colores personalizados.
+
+\subsubsection{Color en las columnas}
+
+Para colorear las columnas debemos usar el comando \verb|\columncolor[modelocolor]{color}|, donde \verb|modelocolor| corresponde al modelo del color que se va a usar, pude ser rgb, cmyk o gray. El apartado \verb|color| especifica el color en el respectivo modelo. Hay colores ya definidos, que son: black, white, red, green, blue,
+cyan, magenta y yellow. Para definir el color debemos hacer uso de las propiedades del paquete \verb|array|, poniendo el comando en la configuración de la tabla. Por ejemplo:
+
+\textbf{Ejemplo 1}
+
+\begin{center}	
+	\begin{tabular}{|>{\columncolor[rgb]{0.8,0,0.2}}c|>{\columncolor[cmyk]{0.8,0.4,0.4,0.1}}c|>{\columncolor[gray]{0.8}}c|>{\columncolor{green}}c|}
+		\hline
+		Columna 1 & Columna 2 & Columna 3 & Columna 4\\		
+		\hline
+		Texto & Texto & Texto & Texto\\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{myquote}
+	\begin{lstlisting}
+\begin{tabular}{|>{\columncolor[rgb]{0.8,0,0.2}}c|>{\columncolor[cmyk]{0.8,0.4,0.4,0.1}}c|>{\columncolor[gray]{0.8}}c|>{\columncolor{green}}c|}    
+	\hline
+	Columna 1 & Columna 2 & Columna 3 & Columna 4\\		
+	\hline
+	Texto & Texto & Texto & Texto\\
+	\hline
+\end{tabular}		
+	\end{lstlisting}			
+\end{myquote}
+
+
+\subsubsection{Color en las filas}
+
+Para colorear las filas se debe usar el comando \verb|\rowcolor[modelocolor]{color}|. Los ajustes de \verb|modelocolor| y \verb|color| son los mismos que el punto anterior, el color en las columnas. Por ejemplo:
+
+\textbf{Ejemplo 1}
+
+\begin{center}	
+	\begin{tabular}{|c|c|}
+		\hline
+		\rowcolor[rgb]{0.3,0.6,0.1} Columna 1 & Columna 2\\ 	
+		\hline
+		\rowcolor{yellow} Texto & Texto\\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{myquote}
+	\begin{lstlisting}
+\begin{tabular}{|c|c|}
+	\hline
+	\rowcolor[rgb]{0.3,0.6,0.1} Columna 1 & Columna 2\\ 	
+	\hline
+	\rowcolor{yellow} Texto & Texto\\
+	\hline
+\end{tabular}	
+	\end{lstlisting}			
+\end{myquote}
+
+
+\subsubsection{Color en las celdas individuales}
+
+Para colorear una celda debemos usar el comando \verb|\cellcolor[modelocolor]{color}|. El \verb|modelocolor| y el \verb|color| se configurar igual que en los dos puntos anteriores. Veamos un ejemplo:
+
+\textbf{Ejemplo 1}
+
+\begin{center}	
+	\begin{tabular}{|c|c|}
+		\hline
+		\cellcolor[rgb]{0.7,0.2,0.7} Columna 1 & \cellcolor[rgb]{0,0.9,0.3}Columna 2\\ 	
+		\hline
+		\cellcolor[cmyk]{0,0.2,0.9,0} Texto & \cellcolor[cmyk]{0.9,0.2,0.3,0} Texto\\ 	
+		\hline
+		\cellcolor[gray]{0.3} Texto & \cellcolor[gray]{0.8} Texto\\ 	
+		\hline
+		\cellcolor{blue} Texto & \cellcolor{red} Texto\\ 	
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{myquote}
+	\begin{lstlisting}
+\begin{tabular}{|c|c|}
+	\hline
+	\rowcolor[rgb]{0.3,0.6,0.1} Columna 1 & Columna\\ 	
+	\hline
+	\rowcolor{yellow} Texto & Texto\\
+	\hline
+\end{tabular}		
+	\end{lstlisting}			
+\end{myquote}
+
+
+\subsection{El paquete \textsl{array}}
+
+Para usarlo ponemos en el preámbulo \verb|\usepackage{array}|. Este paquete permite aumentar las opciones dentro del entorno tabular. Tiene dos usos importantes, el primero es establecer columnas del tamaño deseado, y el segundo, insertar declaraciones antes de la configuración de una columna.
+
+\subsubsection{Definir tamaño de las columnas}
+
+En el primer caso, cuando se quiere insertar una columna del tamaño deseado se debe poner en la configuración de la columna \verb|m{medida}|, estableciendo la medida deseada. La columna se alinea a la izquierda:
+
+\textbf{Ejemplo 1}
+
+\begin{center}
+	\begin{tabular}{|m{5cm}|m{2cm}|}
+		\hline
+		Columna 1 & Columna 2\\
+		\hline		
+		Texto Texto Texto Texto Texto Texto & Texto Texto Texto Texto Texto Texto\\
+		\hline	
+	\end{tabular}
+\end{center}
+
+\begin{myquote}
+	\begin{lstlisting}
+\begin{tabular}{|m{5cm}|m{2cm}|}
+	\hline
+	Columna 1 & Columna 2\\
+	\hline		
+	Texto Texto Texto Texto Texto Texto & Texto Texto Texto Texto Texto Texto\\
+	\hline	
+\end{tabular}		
+		\end{lstlisting}
+	\end{myquote}
+	
+	\textbf{Ejemplo 2}
+	
+	\begin{center}
+		\begin{tabular}{|m{3cm}|m{8cm}|}
+			\hline
+			Columna 1 & Columna 2\\
+			\hline		
+			Texto Texto Texto Texto Texto Texto & Texto Texto Texto Texto Texto Texto\\
+			\hline	
+		\end{tabular}
+	\end{center}
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\begin{tabular}{|m{3cm}|m{8cm}|}
+	\hline
+	Columna 1 & Columna 2\\
+	\hline		
+	Texto Texto Texto Texto Texto Texto & Texto Texto Texto Texto Texto Texto\\
+	\hline	
+\end{tabular}				
+		\end{lstlisting}
+	\end{myquote}
+	
+	\subsubsection{Declaraciones en las columnas}
+	
+	Este paquete también nos permite agregar declaraciones en la configuración de las columnas. Esto se hace agregando \verb|>{declaración}| o \verb|<{declaración}| antes de la configuración de la columna para que inserte la declaración antes o después de la configuración respectivamente. Vamos:
+	
+	\textbf{Ejemplo 1}
+	
+	\begin{center}
+		\begin{tabular}{|>{\bfseries}c|>{\slshape}c|}
+			\hline
+			Columna 1 & Columna 2\\
+			\hline		
+			Texto Texto Texto Texto Texto Texto & Texto Texto Texto Texto Texto Texto\\
+			\hline	
+		\end{tabular}
+	\end{center}
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\begin{tabular}{|>{\bfseries}c|>{\slshape}c|}
+	\hline
+	Columna 1 & Columna 2\\
+	\hline		
+	Texto Texto Texto Texto Texto Texto & Texto Texto Texto Texto Texto Texto\\
+	\hline	
+\end{tabular}				
+		\end{lstlisting}
+	\end{myquote}
+	
+	Por supuesto, las dos anteriores configuraciones se pueden combinar:
+	
+	\textbf{Ejemplo 2}
+	
+	\begin{center}
+		\begin{tabular}{|>{\scshape}m{8cm}|>{\ttfamily \bfseries}m{3cm}|}
+			\hline
+			Columna 1 & Columna 2\\
+			\hline		
+			Texto Texto Texto Texto Texto Texto & Texto Texto Texto Texto Texto Texto\\
+			\hline	
+		\end{tabular}
+	\end{center}
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\begin{tabular}{|>{\scshape}m{8cm}|>{\ttfamily \bfseries}m{3cm}|}
+	\hline
+	Columna 1 & Columna 2\\
+	\hline		
+	Texto Texto Texto Texto Texto Texto & Texto Texto Texto Texto Texto Texto\\
+	\hline	
+\end{tabular}			
+		\end{lstlisting}
+	\end{myquote}	
+	
+	\subsection{Entorno \textsl{tabularx}}
+	
+	\verb|Tabularx| es un paquete adicional que debe ser agregado al preámbulo del documento. Este paquete necesita del paquete \verb|array| para su funcionamiento. Es decir, es necesario agregar al preámbulo los paquetes \verb|tabularx| y \verb|array|:\\ \verb|\usepackage{tabularx}| y \verb|\usepackage{array}|
+	
+	\subsubsection{Tamaño de la tabla}
+	
+	Este paquete agrega una nueva configuración para hacer tablas. Se trata de \verb|X|. Cuando se usa en una tabla en el entorno \verb|tabularx| se especifica que esa columna debe ajustar automáticamente su ancho para que la tabla ocupe la totalidad de del ancho de la tabla definida anteriormente. Su estructura es la siguiente:
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\begin{tabularx}{ancho}{columnas}
+	...
+\end{tabularx}			
+		\end{lstlisting}		
+	\end{myquote}
+	
+	
+	El ancho correspondo al ancho de la tabla, y las columnas se configuran como si se tratara del entorno \verb|tabular|. De igual forma el contenido de este es similar al del entorno \verb|tabular|. Veamos un ejemplo del tamaño. Recordemos que para que el tamaño se ajuste debemos establecer como alineación en la columna que queremos que se ajuste la letra \verb|X|:
+	
+	\textbf{Ejemplo 1}
+	
+	\begin{center}
+		\begin{tabularx}{300pt}{|X|c|}
+			\hline
+			Colomna 1 & Columna 2\\
+			\hline		
+			Texto Texto Texto Texto Texto Texto & Texto Texto Texto Texto Texto Texto\\
+			\hline	
+		\end{tabularx}
+	\end{center}
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\begin{tabularx}{300pt}{|X|c|}
+	\hline
+	Colomna 1 & Columna 2\\
+	\hline		
+	Texto Texto Texto Texto Texto Texto & Texto Texto Texto Texto Texto Texto\\
+	\hline	
+\end{tabularx}			
+		\end{lstlisting}
+	\end{myquote}
+	
+	\textbf{Ejemplo 2}
+	
+	\begin{center}
+		\begin{tabularx}{300pt}{|c|X|}
+			\hline
+			Colomna 1 & Columna 2\\
+			\hline		
+			Texto Texto Texto Texto Texto Texto & Texto Texto Texto Texto Texto Texto\\
+			\hline	
+		\end{tabularx}
+	\end{center}
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\begin{tabularx}{300pt}{|c|X|}
+	\hline
+	Colomna 1 & Columna 2\\
+	\hline		
+	Texto Texto Texto Texto Texto Texto & Texto Texto Texto Texto Texto Texto\\
+	\hline	
+\end{tabularx}			
+		\end{lstlisting}
+	\end{myquote}
+	
+	\textbf{Ejemplo 3}
+	
+	\begin{center}
+		\begin{tabularx}{250pt}{|X|X|}
+			\hline
+			Colomna 1 & Columna 2\\
+			\hline		
+			Texto Texto Texto Texto Texto Texto & Texto Texto Texto Texto Texto Texto\\
+			\hline	
+		\end{tabularx}
+	\end{center}
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\begin{tabularx}{250pt}{|X|X|}
+	\hline
+	Colomna 1 & Columna 2\\
+	\hline		
+	Texto Texto Texto Texto Texto Texto & Texto Texto Texto Texto Texto Texto\\
+	\hline	
+\end{tabularx}			
+		\end{lstlisting}
+	\end{myquote}
+	
+	Como vemos en los ejemplos, las columnas que se establecen con el valor \verb|X| se transforman para que la tabla mantenga el tamaño que se indicó. Para evitar transformaciones y que todas las columnas se mantengas del mismo tamaño, se debe establecer a \verb|X| como la alineación de todas las columnas.
+	
+	\subsubsection{Tabla a tamaño completo}
+	
+	Se puede establecer como tamaño de la tabla el tamaño del texto, poniendo en el parametro ancho el comando \verb|\textwidth|. Si se hace eso la tabla queda así:
+	
+	\textbf{Ejemplo 1}
+	
+	\begin{center}		
+		\begin{tabularx}{\textwidth}{|X|X|}
+			\hline
+			Colomna 1 & Columna 2\\
+			\hline		
+			Texto Texto Texto Texto Texto Texto & Texto Texto Texto Texto Texto Texto\\
+			\hline	
+		\end{tabularx}
+	\end{center}	
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\begin{tabularx}{\textwidth}{|X|X|}
+	\hline
+	Colomna 1 & Columna 2\\
+	\hline		
+	Texto Texto Texto Texto Texto Texto & Texto Texto Texto Texto Texto Texto\\
+	\hline	
+\end{tabularx}			
+		\end{lstlisting}
+	\end{myquote}
+	
+	Por defecto la configuración \verb|X| alinea el texto a la izquierda. Si se quiere cambiar la configuración, se puede hacer haciendo uso de la agrupación de columnas \verb|\multicolumn|. Por ejemplo:
+	
+	\textbf{Ejemplo 2}
+	
+	\begin{center}
+		\begin{tabularx}{300pt}{|X|r|}		
+			\hline
+			\multicolumn{1}{|r|}{Columna 1} &  Columna 2\\ 
+			\hline
+			\multicolumn{1}{|c|}{Texto Texto} &  Texto Texto\\ 
+			\hline	
+			Texto Texto &  Texto Texto\\ 
+			\hline	
+		\end{tabularx}	
+	\end{center}	
+	
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\begin{tabularx}{300pt}{|X|r|}		
+	\hline
+	\multicolumn{1}{|r|}{Columna 1} &  Columna 2\\ 
+	\hline
+	\multicolumn{1}{|c|}{Texto Texto} &  Texto Texto\\ 
+	\hline	
+	Texto Texto &  Texto Texto\\ 
+	\hline	
+\end{tabularx}			
+		\end{lstlisting}		
+	\end{myquote}
+	
+	
+	\subsection{Posicionar tablas (Tablas flotantes)}
+	
+	Puede suceder que las tablas no queden exactamente dónde queremos. Para solucionar esto debemos meter la tabla dentro de un elemento flotante que nos deje posicionarlo con precisión:
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\begin{table}[ubicacion]
+	\begin{tabular}{columnas}
+		...
+	\end{tabular}
+\end{table}			
+		\end{lstlisting}		
+	\end{myquote}
+	
+	
+	Como vemos en el ejemplo, lo que se hizo fue crear el entorno \verb|table| y dentro de ella se creó la tabla con el entorno \verb|tabular|. El entorno \verb|table| es un entorno flotante, por lo que podemos indicar en qué lugar queremos que se posicione. Para seleccionar la ubicación que queremos debemos indicarla en su configuración en \verb|ubicacion|. Las ubicaciones que podemos escoger son las siguientes:
+	
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			\verb|ubicacion| & Posición\\
+			\hline
+			b & Al fondo de la página\\
+			\hline
+			h & En la misma posición donde se encuentra en el código\\
+			\hline
+			t & Al principio de la página\\
+			\hline
+			p & En una página que solo contenga elementos flotantes\\
+			\hline
+			! & Ignora la mayoría de las restricciones que pone Latex \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	
+	Normalmente uno va a querer que la tabla se posicione donde uno la ha escrito en el código, por lo que se recomienda poner en la configuración \verb|[!h]|, para indicar a Latex que la ponga justo en el lugar donde está en el código y que ignore la mayoría de restricciones.
+	
+	Hay casos donde puede resultar imposible poner la tabla justo donde se quiere. Para evitar errores al momento de compilar el programa, Latex permite poner más de una posición, por lo que la configuración más recomendada es \verb|[!hbt]|. Esto quiere decir que, si la tabla no se puede poner en el mismo lugar, entonces que se ponga al fundo de la página. Si esto no es posible, entonces se pondrá al principio de la página.
+	
+	\subsection{Entorno \textsl{longtable}}
+	
+	Cuando generamos una tabla de más de una página Latex suele cometer errores al hacerla. Es por esto por lo que se debe usar el paquete \verb|\usepackage{longtable}|. Este paquete permite crear tablas que ocupan varias páginas.
+	
+	El formato de la tabla es el siguiente:
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\begin{longtable}[alineacion]{columnas}
+	\hline
+	Contenido de la tabla\\
+	\hline
+\end{longtable}			
+		\end{lstlisting}		
+	\end{myquote}
+	
+	
+	\subsubsection{Tablas sin encabezados y pies en todas las páginas}
+	
+	Como podemos ver, el formato de esta tabla es como el formato de una tabla cualquiera, por lo que el parámetro \verb|columnas| se configura el igual que se hace con el entrono \verb|tabular|. La novedad que nos presenta el entorno \verb|longtable|, es que nos permite escojer la alineación de la tabla, como si de un entorno flotante se tratara. El parámetro que controla la alineación es el parámetro \verb|alineacion|, que se configura con tres variables: \verb|c| que alinea al centro, \verb|l| que alinea a la izquierda y \verb|r| que alinea a la derecha. Por defecto la tabla viene alineada al centro. Veamos un ejemplo de una tabla completa alineada a la derecha:
+	
+	\textbf{Ejemplo 1}
+	
+	\begin{longtable}[r]{|c|c|}		
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+	\end{longtable}
+	
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\begin{longtable}[r]{|c|c|}		
+	\hline
+	Texto & Texto\\
+	\hline
+	Texto & Texto\\
+	\hline
+	...
+	...
+\end{longtable}			
+		\end{lstlisting}		
+	\end{myquote}
+	
+	
+	\subsubsection{Tablas con encabezados y pies en todas las páginas}
+	
+	Una particularidad de este paquete es que nos permite crear tablas con encabezado para la primera página, un encabezado para el resto de las páginas, un pie para la última página y un pie para las demás páginas. Veamos su esquema:
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\begin{longtable}[alineacion]{columnas}
+	\hline 
+	Contenido del encabezado para la primera pagina\\
+	\endfirsthead
+	
+	\hline
+	Contenido del encabezado para el resto de paginas\\
+	\endhead
+	
+	Contenido del pie para la ultima pagina\\
+	\hline
+	\endlastfoot
+	
+	Contenido del pie para el resto de paginas\\
+	\hline
+	\endfoot
+	
+	\hline
+	Contenido de la tabla\\
+	\hline
+\end{longtable}			
+		\end{lstlisting}		
+	\end{myquote}
+	
+	
+	Después de definir los encabezados y los pies de la tabla se escribe la tabla como si se tratara de cualquier otra. Para entenderla mejor veamos un ejemplo:
+	
+	\textbf{Ejemplo 1}
+	
+	\begin{longtable}{|c|c|}
+		\hline 
+		\multicolumn{2}{|c|}{Encabezado para la primera pagina}\\		
+		\endfirsthead
+		
+		\hline
+		\multicolumn{2}{|c|}{Encabezado para el resto de paginas}\\		
+		\endhead		
+		
+		\multicolumn{2}{|c|}{Pie para la ultima pagina}\\
+		\hline
+		\endlastfoot
+		
+		\multicolumn{2}{|c|}{Pie para el resto de paginas}\\
+		\hline
+		\endfoot
+		
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+		Texto & Texto\\
+		\hline
+	\end{longtable}
+	
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\begin{longtable}{|c|c|}
+	\hline 
+	\multicolumn{2}{|c|}{Encabezado para la primera pagina}\\		
+	\endfirsthead
+	
+	\hline
+	\multicolumn{2}{|c|}{Encabezado para el resto de paginas}\\		
+	\endhead		
+	
+	\multicolumn{2}{|c|}{Pie para la ultima pagina}\\
+	\hline
+	\endlastfoot
+	
+	\multicolumn{2}{|c|}{Pie para el resto de paginas}\\
+	\hline
+	\endfoot
+	
+	\hline
+	Texto & Texto\\
+	\hline
+	Texto & Texto\\
+	\hline
+	...
+	...
+\end{longtable}			
+		\end{lstlisting}		
+	\end{myquote}
+	
+	
+	\subsection{Otros}
+	
+	\subsubsection{División de celda de nombres de series}
+	
+	Algo que en la mayoría de las tablas de dos entradas se suele hacer el dividir la primera fila y columna en dos para escribir los nombres de las series. Esto se puede hacer con el paquete \verb|\usepackage{slashbox,pict2e}| usando el comando \verb|\backslashbox{abajo}{arriba}|. Veamos:
+	
+	\textbf{Ejemplo 1}
+	
+	\begin{center}
+		\begin{tabular}{|c|c|c|}
+			\hline 
+			\backslashbox{Vehiculo}{Color} & Azul & Rojo\\
+			\hline
+			Moto & 2 & 6\\
+			\hline
+			Carro & 4 & 10\\
+			\hline
+			Avion & 6 & 1\\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\begin{tabular}{|c|c|c|}
+	\hline 
+	\backslashbox{Vehiculo}{Color} & Azul & Rojo\\
+	\hline
+	Moto & 2 & 6\\
+	\hline
+	Carro & 4 & 10\\
+	\hline
+	Avion & 6 & 1\\
+	\hline
+\end{tabular}			
+		\end{lstlisting}		
+	\end{myquote}
+	
+	\subsubsection{Leyenda y citación}
+	
+	A la hora de citar una tabla debe contener una leyenda y una referencia para posteriormente ser citada. Para hacer esto se debe crear la tabla dentro del entorno \verb|table|:
+	
+	\textbf{Ejemplo 1}
+	
+	\begin{table}[!htb]
+		\centering
+		\begin{tabular}{|c|c|c|}
+			\hline 
+			\backslashbox{Vehiculo}{Color} & Azul & Rojo\\
+			\hline
+			Moto & 2 & 6\\
+			\hline
+			Carro & 4 & 10\\
+			\hline
+			Avion & 6 & 1\\
+			\hline
+		\end{tabular}
+		\caption{Leyenda de la tabla}
+		\label{tab:Ve-Co}
+	\end{table}	
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\begin{table}[!htb]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline 
+		\backslashbox{Vehiculo}{Color} & Azul & Rojo\\
+		\hline
+		Moto & 2 & 6\\
+		\hline
+		Carro & 4 & 10\\
+		\hline
+		Avion & 6 & 1\\
+		\hline
+	\end{tabular}
+	\caption{Leyenda de la tabla}
+	\label{tab:Ve-Co}
+\end{table}						
+		\end{lstlisting}		
+	\end{myquote}

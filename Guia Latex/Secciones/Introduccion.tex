@@ -1,0 +1,495 @@
+	\section{Introducción}
+	
+	\subsection{Creando un archivo}
+	
+	Lo primero que debemos hacer al iniciar un documento son escribir estas cuatro líneas básicas y completamente obligatorias a la hora de realizar un documento:
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\documentclass[config]{tipo}
+
+\begin{document}
+	Texto
+\end{document}
+		\end{lstlisting}
+	\end{myquote}
+		
+	Un archivo en Latex se compone de dos partes. Un preámbulo y el cuerpo. El preámbulo es lo que va antes del \verb|\begin{document}|, y el cuerpo es lo que va después.
+	
+	\subsection{Preámbulo}
+	
+	En el preámbulo se ponen todas las configuraciones del documento y los paquetes que se van a cargar para el mismo. Los paquetes son extensiones a la configuración que vienen por defecto. La forma de agregar un nuevo paquete es poner después de \texttt{documentclass} y antes del cuerpo del documento el comando \verb|\usepackage{paquete}|, con el respectivo paquete que deseemos. A lo largo del documento se van a presentar los paquetes más comunes con sus funciones y configuraciones básicas.
+	
+	\subsubsection{Tipo de documento}
+	
+	Como vemos en las líneas que se pusieron anteriormente, lo esencial en el preámbulo es el \verb|tipo|. El \verb|tipo| que aparece hace referencia al tipo de documento que se está desarrollando. Dependiendo del tipo se documento que se escoja, se van a establecer ciertas configuraciones. Entre las más famosas tenemos:
+	
+	\begin{center}
+		\begin{tabularx}{\textwidth}{|c|X|}
+			\hline
+			\verb|tipo| & Descripción\\
+			\hline			
+			article & Para artículos académicos y otros documentos cortos que no necesitan dividirse en capítulos, sino que bastan las secciones y subsecciones y sus párrafos y subpárrafos\\
+			\hline
+			book & Para libros y otros documentos más largos que deben incluir capítulos, prólogo, apéndices o incluso partes\\
+			\hline
+			report & Para informes técnicos. Es similar a la clase \verb|book|\\
+			\hline
+			memoir & Una clase todoterreno con un buen número de funciones adicionales integradas\\
+			\hline
+			beamer & Una clase para hacer diapositivas\\
+			\hline
+		\end{tabularx}
+	\end{center}
+	
+	
+	La principal diferencia entre \texttt{book} y \texttt{report} es que la clase \texttt{Book} hace que todos los capítulos empiecen por una hoja impar, por lo que si un capítulo terina en una hoja impar, se va a producir un salto de una página para que el siguiente empiece en página impar. Esto no sucede en la clase \texttt{report}. Es por este tipo de diferencias que hay que escoger el tipo exacto para el trabajo que uno esté realizando
+	
+	\subsubsection{Configuración del documento}
+	
+	Recordando la línea que debemos poner en el preámbulo \verb|\documentclass[config]{tipo}|, la otra opción configurable es \texttt{config}. Esta tiene diferentes opciones, por lo que se pueden poner tantas como sean necesarias, o ninguna, si es el caso:
+	
+	\begin{center}
+		\begin{longtable}[c]{|p{100pt}|p{330pt}|}
+			\hline
+			\texttt{config} & Descripción\\
+			\hline
+			letterpaper, a4paper, ... & Aquí se selecciona el tamaño del papel. Se mostrarán los tamaños más adelante. El tamaño predefinido es letterpaper\\
+			\hline
+			landscape & Pone el documento de forma horizontal\\
+			\hline
+			10pt, 11pt, 12pt & El tamaño de la fuente. Puede ser 10pt, 11pt o 12pt\\
+			\hline
+			oneside, twoside & Indican si el documento debe estar adaptado a impresión por un sólo lado de la página o por ambos lados de ella\\
+			\hline
+			openright, openany & \texttt{openright} indica que los capítulos deben iniciar en páginas impares, mientras que \texttt{openany} indica que los capítulos pueden iniciar en cualquier página\\
+			\hline
+			onecolumn, twocolumn & Define si el documento va a estar escrito en una o dos columnas\\
+			\hline
+			fleqn & Esta opción hace que las ecuaciones se alineen a la izquierda, en vez de al centro, que es como se hace predeterminadamente\\
+			\hline
+			leqno & Con esta opción hacemos que el número de las ecuaciones quede alineado por la izquierda, en vez de al centro, que es como se hace predeterminadamente\\
+			\hline
+			draft, final & 	La opción \texttt{draft} se usa si queremos que la compilación del documento se haga a modo de ``borrador''. Con \texttt{draft} haremos que las líneas que sean demasiado largas queden marcadas mediante cajas negras. La opción \texttt{final} producirá simplemente que el documento se compile de manera normal\\
+			\hline
+		\end{longtable}
+	\end{center} 
+		
+	\begin{longtable}{|c|c|}
+		\hline
+		\multicolumn{2}{|c|}{Tipos de papel}\\
+		\hline
+		a4paper & Tamaño a4\\
+		\hline
+		letterpaper & Tamaño carta. 14 in x 8.5 in\\
+		\hline
+		a5paper & 210 mm x 148 mm\\
+		\hline
+		b5paper & 250 mm x 176 mm\\
+		\hline
+		executivepaper & 10.5 in x 7.25 in\\
+		\hline
+	\end{longtable}
+	
+
+	Las configuraciones predefinidas para la clase \texttt{book} son: etterpaper, 10pt, twoside, onecolumn, final, openright. Las configuraciones predefinidas para la clase \texttt{article} son: letterpaper, 10pt, oneside, onecolumn, final. Las configuraciones predefinidas para la clase \texttt{report} son: letterpaper, 10pt, oneside, final, openany.
+	
+	\subsection{Escritura en español (asentos y virgulilla)}
+	
+	Si queremos escribir un acento en Latex nos va a dar un error, ya que este lenguaje viene preconfigurado en el idioma inglés, por lo que no va a reconocer los caracteres especiales, como las letras con tildes o la eñe. Para solucionar esto, Latex nos permite indicarle manualmente cuando queremos que una de las letras lleve tilde, como veremos a continuación:
+	
+	\textbf{Ejemplo 1}
+	
+	V\'i a Mar\'ia corriendo con una ca\~na en la mano.
+	\begin{myquote}
+		\begin{lstlisting}
+V\'i a Mar\'ia corriendo con una ca\~na en la mano.
+		\end{lstlisting}
+	\end{myquote}
+	
+	
+	Lo que tenemos que hacer si queremos usa los acentos en poner \verb|\'| antes de la letra que queramos que lleve tilde, y un \verb|\~| antes de la letra que queramos que lleve virgulilla.
+	
+	\subsubsection{Paquete \texttt{inputenc}}
+	
+	Este paquete gestiona las tildes, lo que permite escribirlas directamente sin tener que hacer uso del \verb|\'|. Para usar este paquete debemos poner en el preámbulo\\  \verb|\usepackage[config]{inputenc}|. En la sección \texttt{config} debemos poner el codificador de estrada que se quiera. El del idioma español es \texttt{latin1}, aunque se recomienda ampliamente el uso de \texttt{utf8}, que aparte de codificar los acentos españoles, permite el uso de acentos de otros idiomas.
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\usepackage[uft8]{inputenc}
+\usepackage[latin1]{inputenc}
+		\end{lstlisting}
+	\end{myquote}
+		
+	
+	\subsubsection{Paquete \texttt{babel}}
+	
+	Latex se encuentra configurado en idioma inglés, por lo que vamos a tener problemas a la hora de usar capítulos, ya que van a salir nombrados como \textit{Chapter} y no como \textit{Capítulo}. Otro problema que vamos a tener a la hora de usar Latex en idioma ingles es a la hora de la separación de palabras al final de un capítulo, ya que las palabras se separan de diferentes maneras dependiendo del idioma.
+	
+	Para solucionar estos dos problemas, se debe usar el paquete \texttt{babel}. Cuando usemos el comando \verb|\usepackage[idioma]{babel}| en el preámbulo podemos seleccionar el idioma en el que se va a encontrar el texto. El idioma que se recomienda es \texttt{spanish}, ya que es el español, aunque se pueden poner otro de los 30 idiomas que soporta el paquete.
+	
+	\subsection{Espacios}
+	
+	\subsubsection{Espacios horizontales}
+	
+	Cuando escribimos en Latex y dejamos un espacio en blanco, Latex entiende que hay un espacio. Pero si dejamos más de uno, Latex entiende como si se estuviera dejando solo un espacio:
+	
+	\textbf{Ejemplo 1}
+	
+	Texto Texto Texto Texto Texto.
+	\begin{myquote}
+		\begin{lstlisting}
+Texto Texto Texto Texto Texto.
+		\end{lstlisting}
+	\end{myquote}
+		
+	\textbf{Ejemplo 2}
+	
+	Texto        Texto        Texto        Texto        Texto.
+\begin{myquote}
+	\begin{lstlisting}
+Texto        Texto        Texto        Texto        Texto.
+	\end{lstlisting}
+\end{myquote}
+		
+
+	Si queremos agregar un espacio horizontal en una línea, debemos hacer uso del comando \verb|\hspace{espacio}|, configurando \texttt{espacio} para señalar el espacio que deseamos. Por ejemplo:
+	
+	\textbf{Ejemplo 3}
+	
+	Texto\hspace{1cm}Texto\hspace{1.5cm}Texto\hspace{2cm}Texto\hspace{3cm}Texto.
+	\begin{myquote}
+		\begin{lstlisting}
+Texto\hspace{1cm}Texto\hspace{1.5cm}Texto\hspace{2cm}Texto\hspace{3cm}Texto.
+		\end{lstlisting}
+	\end{myquote}
+	
+	
+	Otra opción que tenemos es el comando \verb|\hfil|. Este comando nos permite empujar el texto hasta el final del párrafo:
+	
+	\textbf{Ejemplo 4}
+	
+	\begin{minipage}{\textwidth}
+		Texto\hfill Texto.\\ Texto Texto Texto \hfill Texto Texto Texto.
+	\end{minipage}	
+	\begin{myquote}
+		\begin{lstlisting}
+Texto\hfill Texto.\\ Texto Texto Texto \hfill Texto Texto Texto.
+		\end{lstlisting}
+	\end{myquote}
+	
+	
+	\subsubsection{Saltos verticales entre párrafos}
+	
+	Cuando queremos hacer un salto vertical entre párrafos se debe usar \verb|\\|, si y solo si los párrafos a separar se encuentran en la misma línea. veamos:
+	
+	\textbf{Ejemplo 1}
+	
+	\begin{minipage}{\textwidth}
+		Parrafo\\Parrafo\\Parrafo\\Parrafo.
+	\end{minipage}	
+	\begin{myquote}
+		\begin{lstlisting}
+Parrafo\\Parrafo\\Parrafo\\Parrafo.
+		\end{lstlisting}
+	\end{myquote}
+		
+	
+	Si queremos separas dos párrafos basta con presionar la tecla \texttt{ENTER} hasta que entre los dos párrafos a separar haya una línea en blanco. Si no dejamos esta línea en blanco, Latex entiende que seguimos estando en el mismo párrafo:
+	
+	\textbf{Ejemplo 1}
+	
+	\begin{minipage}{\textwidth}
+		Parrafo
+				
+		Parrafo		
+		Parrafo
+				
+		Parrafo
+	\end{minipage}	
+	\begin{myquote}
+		\begin{lstlisting}
+Parrafo
+
+Parrafo		
+Parrafo
+
+Parrafo
+		\end{lstlisting}
+	\end{myquote}
+	
+	
+	Cuando queremos indicarle a Latex que hemos acabado un párrafo debemos usar \verb|\par|. Suele ocurrir que para indicar un salto de párrafo se use el \verb|\\| porque visualmente crear un salto de párrafo más grande. Esto es incorrecto, porque deforma las cajas y puede ocasionar errores al momento de compilar. En el caso en que se quiera ver un espacio más grande se debe configurar en el preámbulo se debe usar el salto vertical después de terminar el párrafo con un \verb|\par|.
+	
+	\subsubsection{Espacio entre párrafos con \texttt{setlength}}
+	
+	Para configurar el espaciado entre párrafos en el preámbulo se debe usar el comando \verb|\setlength{\parskip}{tamaño}|. Por defecto el espacio entre párrafos es de una línea, por lo que \textit{parskip} vale 0. Podemos cambiar su tamaño con el comando \verb|\setlength|. Este comando debe ser escrito en el preámbulo. Si se hace así va a afectar a todo el documento. La distancia que configuremos en \texttt{tamaño} se va a sumar a la medida de una línea, es decir, si escribimos en \texttt{tamaño} \texttt{1cm}, el espacio entre párrafos va a ser de una línea más 1cm. El tamaño que las personas prefieren es de dos líneas en blanco, por lo que en la configuración del \texttt{tamaño} pude ponerse \verb|\baselineskip|, que es el tamaño estándar de una línea.
+	
+	Si no queremos que esta configuración afecte a todo el documento, sino solo a una porción de este, podemos poner el comando entre un entorno, o entre llaves. Veamos ejemplo del uso de este comando:\par
+	
+	\textbf{Ejemplo 1}
+	
+	\begin{minipage}{\textwidth}
+		\singlespace
+		\setlength{\parskip}{0mm}
+		\setlength{\parskip}{-2mm}
+		Parrafo\par		
+		Parrafo\par		
+		Parrafo\par
+	\end{minipage}
+
+	\begin{myquote}
+		\begin{lstlisting}
+\setlength{\parskip}{-2mm}
+Parrafo\par		
+Parrafo\par		
+Parrafo\par
+		\end{lstlisting}
+	\end{myquote}
+	
+	\textbf{Ejemplo 2}
+	
+	\begin{minipage}{\textwidth}
+		\singlespace
+		\setlength{\parskip}{0mm}
+		\setlength{\parskip}{5mm}
+		Parrafo\par		
+		Parrafo\par		
+		Parrafo\par
+	\end{minipage}
+
+	\begin{myquote}
+		\begin{lstlisting}
+\setlength{\parskip}{5mm}
+Parrafo\par		
+Parrafo\par		
+Parrafo\par
+		\end{lstlisting}
+	\end{myquote}
+
+	\subsubsection{Medida de saltos verticales}
+	
+	Ahora bien, se puede presentar el caso en el que queramos insertar un salto vertical con la medida que queramos. Para hacer esto debemos usar el comando \verb|\vspace{espacio}|, configurando \texttt{espacio} para señalar el espacio que deseamos. Por ejemplo:
+	
+	\textbf{Ejemplo 1}
+	
+	\begin{minipage}{\textwidth}
+		Texto
+		\vspace{1in}
+		
+		Texto
+		\vspace{1cm}
+				
+		Texto
+	\end{minipage}	
+	\begin{myquote}
+		\begin{lstlisting}
+Texto
+\vspace{1in}
+
+Texto
+\vspace{1cm}
+		
+Texto
+		\end{lstlisting}
+	\end{myquote}
+	
+	
+	Si se quiere se pueden usar uno de los tres espacios que vienen configurados por defecto en Latex, que son:
+	
+	\begin{center}
+		\begin{tabularx}{300pt}{|X|X|X|}
+			\hline
+			\verb|\smallskip| & \verb|\medskip| & \verb|\bigskip|\\
+			\hline
+			Texto 
+			\smallskip 
+			
+			Texto & Texto 
+			\medskip 
+			
+			Texto & Texto 
+			\bigskip 
+			
+			Texto\\
+			\hline
+		\end{tabularx}
+	\end{center} 
+
+	\subsection{Alineación del texto}
+	
+	\subsubsection{Alineación con comando}
+	
+	Latex justifica automáticamente los textos. Si queremos alinearlos a nuestro gusto tenemos dos opciones. La primera es declarando la variable \verb|\centering\|, \verb|raggedright| y \verb|\raggedleft| para alinear el texto al centro, izquierda y derecha, respectivamente. El problema de usar estos comandos es que el texto desde el comando en adelante va a mantener esta alineación hasta el final del texto o hasta que haya otro comando que modifique lo mismo:
+	
+	\textbf{Ejemplo 1}
+	
+	\begin{minipage}{\textwidth}
+		\centering		
+		Texto centrado
+				
+		\raggedright
+		Texto alineado a la izquierda
+			
+		\raggedleft
+		Texto alineado a la derecha
+	\end{minipage}
+
+	\begin{myquote}
+		\begin{lstlisting}
+\centering		
+Texto centrado
+	
+\raggedright
+Texto alineado a la izquierda
+	
+\raggedleft
+Texto alineado a la derecha
+		\end{lstlisting}
+	\end{myquote}
+	
+	
+	\subsubsection{Alineación con entornos}
+	
+	La otra opción que tenemos para alinear un texto es crear un entorno. Los entornos sirven para que entre ellos funcione una configuración distinta a la del texto que está afuera. Por ejemplo, podemos crear un entorno donde lo que está dentro de él esté alineado a la derecha, mientras que el documento está justificado. Los entornos tienen la siguiente estructura:
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\begin{tipo}
+	Contenido del entrono
+\end{tipo}
+		\end{lstlisting}
+	\end{myquote}
+	
+	
+	Los entornos que nos competen en esta sección son tres: \texttt{center}, \texttt{flushright} y \texttt{flushleft}. Cuando ponemos cualquiera de estas configuraciones dentro del \texttt{tipo} del entorno, lo que está adentro se aliena al centro, a la derecha y a la izquierda respectivamente:
+	
+	\textbf{Ejemplo 1}
+	
+	\begin{center}
+		Texto centrado
+	\end{center}
+
+	\begin{flushright}
+		Texto alineado a la derecha
+	\end{flushright}
+
+	\begin{flushleft}
+		Texto alineado a la izquierda
+	\end{flushleft}
+	
+	\begin{myquote}
+		\begin{lstlisting}
+\begin{center}
+	Texto centrado
+\end{center}
+
+\begin{flushright}
+	Texto alineado a la derecha
+\end{flushright}
+
+\begin{flushleft}
+	Texto alineado a la izquierda
+\end{flushleft}
+		\end{lstlisting}
+	\end{myquote}
+	
+	
+	Como vemos, haciendo esto podemos hacer que solo una parte del texto a nuestra elección esté alineada, mientras que el resto del texto sigue estando justificado.
+	
+		\subsection{Letra}	
+	
+	\subsubsection{Tamaño de letra}
+	
+	El tamaño de la letra se puede configurar anteponiendo a un texto el comando \verb|\tamaño| con el tamaño que se quiera. Si solo se quiere cambiar una palabra se puede encerrar entre corchetes \verb|{\tamaño Texto}|:\\
+	
+	\begin{center}
+		\begin{tabular}[c]{|c|c|c|}
+			\hline
+			\verb|\tamaño| & Ejemplo & Texto\\
+			\hline
+			\verb|\tiny | & {\tiny tiny} & {\tiny Texto de ejemplo}\\	
+			\verb|\scriptsize| & {\scriptsize scriptsize} & {\scriptsize Texto de ejemplo}\\
+			\verb|\footnotesize| & {\footnotesize footnotesize} & {\footnotesize Texto de ejemplo}\\
+			\verb|\small| & {\small small} & {\small Texto de ejemplo}\\			
+			\verb|\normalsize| & {\normalsize normalsize} & {\normalsize Texto de ejemplo}\\		
+			\verb|\large| & {\large large} & {\large Texto de ejemplo}\\			
+			\verb|\Large| & {\Large Large} & {\Large Texto de ejemplo}\\			
+			\verb|\LARGE| & {\LARGE LARGE} & {\LARGE Texto de ejemplo}\\			
+			\verb|\huge| & {\huge huge} & {\huge Texto de ejemplo}\\			
+			\verb|\Huge| & {\Huge Huge} & {\Huge Texto de ejemplo}\\
+			\hline	
+		\end{tabular}
+	\end{center}
+	
+	
+	\subsubsection{Estilo de letra}
+	
+	El estilo de la letra se puede configurar con el comando \verb|\estilo{Texto}| con el estilo que se quiera. Por otra parte, para cambiar todo el texto se debe usar el siguiente comando \verb|\estiloseries| o \verb|\estiloshape|:
+	
+	\begin{center}
+		\begin{tabular}[c]{|c|c|c|c|}
+			\hline
+			\verb|\estiloshape| & \verb|\estilo| & Ejemplo & Texto\\
+			\hline
+			\verb|\bfseries| & \verb|\textbf| & \textbf{Negrita} & \textbf{Texto de ejemplo}\\	
+			\verb|\mdseries| & \verb|\textmd| & \textmd{Negrita medio} & \textmd{Texto de ejemplo}\\		
+			\verb|\itshape| & \verb|\textit| & \textit{Cursiva} & \textit{Texto de ejemplo}\\	
+			\verb|\slshape| & \verb|\textsl| & \textsl{Roman inclinado} & \textsl{Texto de ejemplo}\\	
+			\verb|\scshape| & \verb|\textsc| & \textsc{Mayúsculas pequeñas} & \textsc{Texto de ejemplo}\\	
+			\verb|\upshape| & \verb|\textup| & \textup{Rectas} & \textup{Texto de ejemplo}\\	
+			& \verb|\underline| & \underline{Subrayado} & \underline{Texto de ejemplo}\\			
+			& \verb|\uppercase| & \uppercase{Mayúsculas} & \uppercase{Texto de ejemplo}\\	
+			\hline	
+		\end{tabular}
+	\end{center}
+	
+	
+	\subsubsection{Tipo de letra}
+	
+	De igual forma se puede cambiar el tipo de letra entre las siguientes con el comando \verb|\tipo{Texto}|. Por otra parte, para cambiar todo el texto se debe usar el siguiente comando antes del texto \verb|\tipofamily|:
+	
+	\begin{center}
+		\begin{tabular}[c]{|c|c|c|c|}
+			\hline
+			\verb|\tipofamily| & \verb|\tipo| & Ejemplo & Texto\\
+			\hline
+			\verb|\rmfamily| &\verb|\textrm| & \textrm{Roman} & \textrm{Texto de ejemplo}\\		
+			\verb|\sffamily| &\verb|\textsf| & \textsf{Sans serif} & \textsf{Texto de ejemplo}\\		
+			\verb|\ttfamily| &\verb|\texttt| & \texttt{Mecanografiado} & \texttt{Texto de ejemplo}\\		
+			\hline	
+		\end{tabular}
+	\end{center}
+	
+	
+	Cabe recalcar que se pueden convidar tanto los tipos como los estilos de las letras, por ejemplo:
+	
+	\begin{center}
+		\begin{tabular}[c]{|c|c|}
+			\hline
+			\verb|\tipo| & Ejemplo\\
+			\hline
+			\verb|\textrm{\Large \textbf{}}| & \textrm{{\Large \textbf{Roman Large Negrita}}}\\
+			\verb|\textsf{\scriptsize \underline{}}| & \textsf{{\scriptsize \underline{Sans serif Scriptsize Subrayado}}}\\
+			\hline	
+		\end{tabular}
+	\end{center}
+	
+	
+	\subsubsection{Interlineado}
+	
+	Para modificar el interlineado se debe usar el paquete \texttt{setspace}. Este paquete nos permite escoger el interlineado entre sus tres opciones predefinidas o entre una a nuestra elección. Para usarlo debemos definir el paquete \verb|\usepackage{setspace}| en el preámbulo. Cuando hayamos hecho eso se tienen los siguientes comandos, que pueden ser puestos antes de un párrafo para que afecte desde ese punto en adelante, o entre un entorno para que solo modifique el interior de este:
+	
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			Tamaño & Ejemplo\\
+			\hline
+			\verb|\doublespacing| & Interlineado de 2\\
+			\hline
+			\verb|\onehalfspacing| & Interlineado de 1.5\\
+			\hline
+			\verb|\singlespacing| & Interlineado de 1\\
+			\hline
+		\end{tabular}
+	\end{center}

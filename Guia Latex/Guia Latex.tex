@@ -1,0 +1,78 @@
+\documentclass[11pt]{article}%Tipo de documento y tamaño
+\usepackage[utf8]{inputenc}%Caracteres especiales
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}%Idioma del documento
+\usepackage[letterpaper,top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}%Márgenes
+\usepackage{graphicx}%Para insertar imágenes
+%\usepackage{float}%Permite posicionar mejor las figuras y tablas
+%\usepackage{ragged2e}%Para centrar y justificar
+\usepackage{apacite}%Citar en estilo APA
+\usepackage{natbib}%Para mejorar aumentar los comandos a la hora de citar
+%\usepackage{url}%Para poner URL 
+\usepackage[hidelinks,breaklinks=true]{hyperref}%Linkear las citas y los urls. Hidelinks elimina los cuadros que se hacen a los lados. breaklinks=true se usa para que separe en líneas lo títulos muy largos
+\usepackage{enumerate}%Modificar las enumeraciones
+\usepackage{multirow}%Para unir columnas y filas
+\usepackage{colortbl}%Color a las celdas de las tablas
+\usepackage{xcolor}%Poder definir colores
+\usepackage{longtable}%Para hacer tablas largas
+\usepackage{tabularx}%Para hacer tablas que completen el largo de la página
+\usepackage{array}%Según la wiki de tabular x, este paquete es necesario para que tabularx funcione bien. Además agrega nuevas opciones a tabular
+\usepackage{slashbox,pict2e}%Para dar un slash en las tablas. pict2e mejora la línea
+\usepackage{lmodern}%Cambia la fuente a una fuente vectorial, para que no haya problemas al reescalarlo
+\usepackage{listings}%Pare crear un entorno donde se pueden escribir comandos ignorando su función y manteniendo los espacios
+%\usepackage{cancel}%Poder cancelar en las ecuaciones matemáticas
+\usepackage{setspace}%Para establecer el interlineado
+\usepackage{amsmath}%Mejora la escritura matemática
+%\usepackage{amsthm}%Ayuda a definir estructuras similares a teoremas
+\usepackage{amssymb}%Añade símbolos matemáticos extra
+\usepackage{titlesec} % Modificar los estidos de las secciones, subsecciones y subsubsecciones
+\usepackage{lipsum} % Párrafos de relleno 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\R}[1][2]{\mathbb{R}^{#1}}%Comando para espeficifar espacios dimencionales
+\newcommand{\Lagr}{\mathcal{L}}%Comando para escribir el símbolo de Lagrange
+\newcommand{\Cels}{^{\circ}\text{C}}%Comando para escribir el símbolo de Celsius
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{myquote}%Para que lo que esté en el entorno myquote tenga sangría de 0.5in
+{\list{}{\leftmargin=0.5in}\item[]}
+{\endlist} 
+
+\lstset{%Entorno para los ejemplos de comandos
+	basicstyle=\ttfamily,%Fuente de lo que está dentro
+	breaklines=true,%Que justifique el texto
+	tabsize=4,%Tamaño del tab
+	backgroundcolor=\color{light-gray},%Color del fondo
+	literate={\ \ }{{\ }}1%Para que la distancia del tab sea correcta a la hora de compilar
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{light-gray}{gray}{0.95}
+\definecolor{light-yellow}{rgb}{1,1,0.75}
+\definecolor{light-blue}{rgb}{0.5,0.5,1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{\huge \scshape Latex y algunas de sus funciones\\ $v.\;4.3$ \vspace{30pt}}
+\author{Miguel Ángel García}
+\date{\today}
+
+\begin{document}
+	
+	\onehalfspacing %Modifica el interlineado
+	
+	\maketitle
+	\tableofcontents %Índice de contenidos
+	\newpage
+	
+	\setlength{\parskip}{\baselineskip}%Define el espacio entre párrafos
+	
+	\include{Secciones/Introduccion}	
+	\include{Secciones/Haciendountaller}
+	\include{Secciones/Tablas}
+	\include{Secciones/Matematicas}
+	
+\end{document}

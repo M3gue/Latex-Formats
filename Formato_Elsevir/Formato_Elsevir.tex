@@ -1,0 +1,142 @@
+\documentclass[11pt,fleqn]{article} % Tipo de documento y tamaño. fleqn alínea las ecuaciones a la izquierda
+\usepackage[utf8]{inputenc}% Caracteres especiales
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel} % Idioma del documento
+\usepackage[letterpaper,top=1.5cm,bottom=2cm,left=1.5cm,right=1.5cm]{geometry} % Márgenes
+\usepackage{graphicx} % Para insertar imágenes
+\usepackage{float} % Permite posicionar mejor las figuras y tablas
+\usepackage{ragged2e} % Para centrar y justificar
+\usepackage{url} % Para poner URL 
+\usepackage{enumerate} % Modificar las enumeraciones
+\usepackage{multirow} % Para unir columnas y filas
+\usepackage{colortbl} % Color a las celdas de las tablas
+\usepackage[dvipsnames]{xcolor} % Poder definir colores. El [dvipsnames] agreaga nombres de colores
+\usepackage{longtable} % Para hacer tablas largas
+\usepackage{tabularx} % Para hacer tablas que completen el largo de la página
+\usepackage{array} % Según la wiki de tabular x, este paquete es necesario para que tabularx funcione bien. Además, agrega nuevas opciones a tabular
+%\usepackage{slashbox,pict2e} % Para dar un slash en las tablas. pict2e mejora la línea
+\usepackage{lmodern} % Cambia la fuente a una fuente vectorial, para que no haya problemas al reescalado
+\usepackage{cancel} % Poder cancelar en las ecuaciones matemáticas
+\usepackage{setspace} % Para establecer el interlineado
+\usepackage{amsmath} % Mejora la escritura matemática
+\usepackage{amsthm} % Ayuda a definir estructuras similares a teoremas
+\usepackage{amssymb} % Añade símbolos matemáticos extra
+\usepackage{titlesec} % Modificar los estidos de las secciones, subsecciones y subsubsecciones
+\usepackage{multicol} % Añade distribución para hacer que todo el documento pueda ser a dos columnas.
+\usepackage{caption} % Modifica el estilo del caption
+\usepackage[hidelinks, breaklinks=true]{hyperref} % Linkear las citas y los urls. Hidelinks elimina los cuadros que se hacen a los lados. breaklinks=true se usa para que separe en líneas lo títulos muy largos
+\usepackage{booktabs} % Nuevas líenas para hacer tablas
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Modificación secciones
+
+\titleformat{\section}[block]{\normalfont \large \bfseries \color{BlueViolet}}{\arabic{section}.}{4pt}{} % Da formato a \section
+\titlespacing{\section}{0cm}{16pt}{10pt} % Espacios de las secciones. El primero indica el espacio entre el borde del documento y el número. El segundo el espacio con el párrafo de arriba y el tercero el espacio con el párrafo de abajo
+
+\titleformat{\subsection}[block]{\normalfont \large \itshape \color{BlueViolet}}{\arabic{section}.\arabic{subsection}.}{4pt}{}
+\titlespacing{\subsection}{0cm}{16pt}{10pt}
+
+\titleformat*{\subparagraph}{\normalfont \normalsize \itshape \color{BlueViolet}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Modificación caption
+
+\captionsetup{font=small,justification=raggedright,singlelinecheck=false} % Modifica el estilo de los caption
+\captionsetup[figure]{name={Fig.},labelsep=period,labelfont={bf,it,color=BlueViolet},textfont=it} % Modifica el nombre de las figuras y su separador
+\captionsetup[table]{name={Tabla},labelsep=newline,labelfont={bf,color=BlueViolet}} % Modifica el nombre de las figuras y su separador
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Entornos tablas
+
+%\renewcommand\tabularxcolumn[1]{>{\Centering}p{#1}} % Hace que el X de tabularx ahora esté centrado y no alineado a la izquierda
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X} % Crea el tipo Y que es como el X pero alineado a la izquierda
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Nuevos comandos
+
+%\newcommand{\R}[1][2]{\mathbb{R}^{#1}} % Comando para espeficifar espacios dimencionales
+\newcommand{\Cels}{$^{\circ}\text{C}$ } % Comando para escribir el símbolo de Celsius
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+	\onehalfspacing % Modifica el interlineado
+	\setlength{\parskip}{0cm} % Define el espacio entre párrafos
+	\setlength{\parindent}{0cm} % Define la sangría de los párrafos	
+	
+	\begin{small}
+		\begin{tabularx}{\textwidth}{Y r}
+			\multirow{3}{*}{\includegraphics[scale=0.25]{Imagenes/Logo.png}} 
+			& \\
+			& \large Laboratorio de Inorgánica I \\
+			& 
+		\end{tabularx}
+	\end{small}
+	
+	\begin{flushleft}
+		\textcolor{BlueViolet}{\Large \textbf{Informe Práctica 16: Algunas reacciones de cationes}}
+	\end{flushleft}
+
+	Isabella Rodríguez Rodríguez$^{\dag}$, Federico Arenas Torres$^{\dag}$ y Nicolás García García$^{\dag}$
+	
+	\begin{small}
+		\textit{$^{\dag}$Departamento de Química, Facultad de Ciencias, Universidad de los Andes, Carrera 1 N° 18 A 12, Bogotá, 111711, Colombia.}
+		
+		\textcolor{BlueViolet} {\hrulefill}
+		
+		\textcolor{BlueViolet} {\textbf{Resumen:}}  Se llevaron a cabo reacciones con los metales de transición titanio, cobalto y manganeso, observando su comportamiento. Las reacciones de titanio se realizaron con el estado de oxidación $\mathrm{Ti^{(IV)}}$, las de cobalto con $\mathrm{Co^{(II)}}$ y por ultimo, las de manganeso con $\mathrm{Mn^{(II)}}$. Se observaron cambios de color y de fase para cada reacción.  
+		
+		\textcolor{BlueViolet} {\hrulefill} % Hace una línea horizontal
+	\end{small}
+	
+	\setlength{\columnsep}{0.63cm} % Establece el espacio entre columnas
+	
+	%\begin{multicols*}{2} % El asterisco sirve para invalidar el balanceo de párrafos al final del documento
+	\begin{multicols}{2}
+%		\setlength{\parskip}{\baselineskip} % Define el espacio entre párrafos
+		\setlength{\parindent}{0.5cm} % Define la sangría de los párrafos
+				
+		\section{Introducción} 
+		
+		\subsection{Subsección}
+		
+		\subparagraph{Sub Subsección}Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum \cite{article}. 
+				
+		\subsection{Subsección}
+		
+		\begin{table}[H]
+			\centering
+			\caption{Tabla de ejemplo}
+			\label{Tabla_1}
+			\begin{tabularx}{0.5\textwidth}{X X X} 
+				\toprule % Línea de más arriba
+				\multicolumn{2}{c}{Item} & \\ 
+				\cmidrule(r){1-2} % Línea no continua en la mitad
+				Animal & Description & Price (\$)\\ 
+				\midrule % Línea de la mitad
+				Gnat & per gram & 13.65 \\
+				& each & 0.01 \\
+				Gnu & stuffed & 92.50 \\
+				Emu & stuffed & 33.33 \\
+				Armadillo & frozen & 8.99 \\ 
+				\bottomrule % Línea final
+			\end{tabularx}			
+		\end{table}
+		
+		\section{Sección Experimental} 
+		
+		Figura \ref{Montaje_exp} y tabla \ref{Tabla_1}.
+		
+		\begin{figure}[H]			
+			\centering
+			\includegraphics[scale=0.04]{Imagenes/Montaje.png}
+			\caption{Montaje experimental} 
+			\label{Montaje_exp}	
+		\end{figure}
+				
+		\section{Resultados y discusión}
+				
+		\section{Conclusiones} 	 
+		 
+		\bibliography{bib} % Archivo con la bibliografía
+		\bibliographystyle{acs-bib} % Estilo de la bibliografía
+		
+	\end{multicols}	
+	
+\end{document}
