@@ -4,31 +4,36 @@
 \begin{document}
 	\onehalfspacing % Modifica el interlineado
 	\setlength{\parskip}{0cm} % Define el espacio entre párrafos
-	\setlength{\parindent}{0cm} % Define la sangría de los párrafos	
+	\setlength{\parindent}{0cm} % Define la sangría de los párrafos
+	\urlstyle{same} % Define la fuente para los URL de la bibliografía	
 	
 	\begin{small}
 		\begin{tabularx}{\textwidth}{Y r}
 			\multirow{3}{*}{\includegraphics[scale=0.25]{Imagenes/Logo.png}} 
 			& \\
-			& \large Laboratorio de Inorgánica I \\
+			& \large \textcolor{Micolor}{Nombre materia} \\
 			& 
 		\end{tabularx}
 	\end{small}
 	
 	\begin{flushleft}
-		\textcolor{BlueViolet}{\Large \textbf{Informe Práctica 16: Algunas reacciones de cationes}}
+		\textcolor{Micolor}{\Large \textbf{Nombre del documento}}
 	\end{flushleft}
 
-	Isabella Rodríguez Rodríguez$^{\dag}$, Federico Arenas Torres$^{\dag}$ y Nicolás García García$^{\dag}$
+	Nombre1$^{\dag}$$^{a}$ y Nombre2$^{\dag}$$^{b}$
 	
 	\begin{small}
 		\textit{$^{\dag}$Departamento de Química, Facultad de Ciencias, Universidad de los Andes, Carrera 1 N° 18 A 12, Bogotá, 111711, Colombia.}
 		
-		\textcolor{BlueViolet} {\hrulefill}
+		\textit{$^{a}$ correo1, $^{b}$ correo2}
 		
-		\textcolor{BlueViolet} {\textbf{Resumen:}}  Se llevaron a cabo reacciones con los metales de transición titanio, cobalto y manganeso, observando su comportamiento. Las reacciones de titanio se realizaron con el estado de oxidación $\mathrm{Ti^{(IV)}}$, las de cobalto con $\mathrm{Co^{(II)}}$ y por ultimo, las de manganeso con $\mathrm{Mn^{(II)}}$. Se observaron cambios de color y de fase para cada reacción.  
+		\linimg % Hace una línea horizontal
 		
-		\textcolor{BlueViolet} {\hrulefill} % Hace una línea horizontal
+		\textcolor{Micolor}{\textbf{Resumen:}} Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.  
+	
+		\textcolor{Micolor}{\textbf{Palabras clave:}} \textit{Palabra 1, palabra 2, palabra 3}
+		
+		\linimg
 	\end{small}
 	
 	\setlength{\columnsep}{0.63cm} % Establece el espacio entre columnas
@@ -42,7 +47,7 @@
 		
 		\subsection{Subsección}
 		
-		\subparagraph{Sub Subsección}Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum \cite{article}. 
+		\subparagraph{Sub Subsección}Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. \cite{article}, \cite{1}, \cite{book}. 
 				
 		\subsection{Subsección}
 		
@@ -69,11 +74,13 @@
 		
 		Figura \ref{Montaje_exp} y tabla \ref{Tabla_1}.
 		
-		\begin{figure}[H]			
+		\linimg
+		\begin{figure}[H]
 			\centering
-			\includegraphics[scale=0.04]{Imagenes/Montaje.png}
+			\includegraphics[scale=0.05]{Imagenes/Montaje.png}
 			\caption{Montaje experimental} 
 			\label{Montaje_exp}	
+			\linimg
 		\end{figure}
 				
 		\section{Resultados y discusión}
@@ -82,6 +89,21 @@
 		 
 		\bibliography{bib} % Archivo con la bibliografía
 		\bibliographystyle{acs-bib} % Estilo de la bibliografía
+		
+	\end{multicols}	
+
+	\newpage % Nueva página
+	\section*{Anexos} % El asterisco no enumera la sección
+		
+	\begin{multicols}{2}
+		
+		\begin{gather}
+			A=\varepsilon \cdot b \cdot c \\
+			A_{\lambda_1}=\varepsilon _{cuma \; \lambda_1} \cdot b \cdot c _{cuma} + \varepsilon _{vaini \; \lambda_1} \cdot b \cdot c _{vaini} \\
+			A_{\lambda_2}=\varepsilon _{cuma \; \lambda_2} \cdot b \cdot c _{cuma} + \varepsilon _{vaini \; \lambda_2} \cdot b \cdot c _{vaini} \\
+			\frac{A_{\lambda_1} - \varepsilon _{cuma \; \lambda_1} \cdot b \cdot c _{cuma}}{\varepsilon _{vaini \; \lambda_1} \cdot b} =  c _{vaini} = \varphi  \\
+			\frac{A_{\lambda_2}}{b}= \varepsilon _{cuma \; \lambda_2} \cdot c _{cuma} + \varepsilon _{vaini \; \lambda_2} \cdot \varphi
+		\end{gather}
 		
 	\end{multicols}	
 	

@@ -27,31 +27,60 @@
 \usepackage{caption} % Modifica el estilo del caption
 \usepackage[hidelinks, breaklinks=true]{hyperref} % Linkear las citas y los urls. Hidelinks elimina los cuadros que se hacen a los lados. breaklinks=true se usa para que separe en líneas lo títulos muy largos
 \usepackage{booktabs} % Nuevas líenas para hacer tablas
+\usepackage{fancyhdr} % Para modificar encabezados y pies de página
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Definir colores
+
+\definecolor{Micolor}{rgb}{0.0, 0.5, 0.0} % Ao (English) (green)
+%\definecolor{Micolor}{rgb}{0.54, 0.17, 0.89} % Blue violet
+%\definecolor{Micolor}{rgb}{0.0, 0.44, 1.0} % Brandeis blue
+%\definecolor{Micolor}{rgb}{0.8, 0.34, 0.0} % Tenné (Tawny)
+%\definecolor{Micolor}{rgb}{0.68, 0.09, 0.13} % Upsdell red
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Modificación secciones
 
-\titleformat{\section}[block]{\normalfont \large \bfseries \color{BlueViolet}}{\arabic{section}.}{4pt}{} % Da formato a \section
+\titleformat{\section}[block]{\normalfont \large \bfseries \color{Micolor}}{\arabic{section}.}{4pt}{} % Da formato a \section
 \titlespacing{\section}{0cm}{16pt}{10pt} % Espacios de las secciones. El primero indica el espacio entre el borde del documento y el número. El segundo el espacio con el párrafo de arriba y el tercero el espacio con el párrafo de abajo
 
-\titleformat{\subsection}[block]{\normalfont \large \itshape \color{BlueViolet}}{\arabic{section}.\arabic{subsection}.}{4pt}{}
+\titleformat{\subsection}[block]{\normalfont \large \itshape \color{Micolor}}{\arabic{section}.\arabic{subsection}.}{4pt}{}
 \titlespacing{\subsection}{0cm}{16pt}{10pt}
 
-\titleformat*{\subparagraph}{\normalfont \normalsize \itshape \color{BlueViolet}}
+\titleformat*{\subparagraph}{\normalfont \normalsize \itshape \color{Micolor}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Modificación caption
 
 \captionsetup{font=small,justification=raggedright,singlelinecheck=false} % Modifica el estilo de los caption
-\captionsetup[figure]{name={Fig.},labelsep=period,labelfont={bf,it,color=BlueViolet},textfont=it} % Modifica el nombre de las figuras y su separador
-\captionsetup[table]{name={Tabla},labelsep=newline,labelfont={bf,color=BlueViolet}} % Modifica el nombre de las figuras y su separador
+\captionsetup[figure]{name={Fig.},labelsep=period,labelfont={bf,it,color=Micolor},textfont=it} % Modifica el nombre de las figuras y su separador
+\captionsetup[table]{name={Tabla},labelsep=newline,labelfont={bf,color=Micolor}} % Modifica el nombre de las figuras y su separador
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Entornos tablas
 
 %\renewcommand\tabularxcolumn[1]{>{\Centering}p{#1}} % Hace que el X de tabularx ahora esté centrado y no alineado a la izquierda
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X} % Crea el tipo Y que es como el X pero alineado a la izquierda
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Configuración enpabezado y pie de página
+
+\pagestyle{fancy} % Estilo encabezado y pie de página personalizado
+
+\fancyhf{} % Borrar el estilo predeterminado
+\renewcommand{\headrulewidth}{0pt} % Grosor línea superior
+\renewcommand{\footrulewidth}{0pt} % Grosor línea inferior
+
+%\lhead{} % Superior izquierdo
+%\chead{} % Superior centro
+%\rhead{} % Superior derecha
+
+%\lfoot{} % Inferior izquierdo
+\cfoot{\textcolor{Micolor}{\rulefillfoot\;[\thepage]\;\rulefillfoot}} % Inferior centro
+%\rfoot{} % Inferior derecha 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Nuevos comandos
 
-%\newcommand{\R}[1][2]{\mathbb{R}^{#1}} % Comando para espeficifar espacios dimencionales
-\newcommand{\Cels}{$^{\circ}\text{C}$ } % Comando para escribir el símbolo de Celsius
+\newcommand{\rulefillfoot}{\leavevmode\leaders\hrule height .7ex width 1pt depth -0.6ex\hfill\kern0pt} % Se define un nuevo comando como \hrulefill pero a mitad del renglón
+\newcommand{\rulefillimg}{\leavevmode\leaders\hrule height 0.6pt\hfill\kern0pt} % Línea para las imágenes
+\newcommand{\linimg}{\noindent \textcolor{Micolor}{\rulefillimg}}
+
+\newcommand{\cels}{$^{\circ}\text{C}$ }
+\newcommand{\csf}{Diagrama elavorado empleando ChemSketch Freeware 2021.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
