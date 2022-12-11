@@ -1,5 +1,3 @@
-%\ProvidesPackage{MyConfig}
-
 \usepackage[utf8]{inputenc}% Caracteres especiales
 \usepackage[T1]{fontenc}
 \usepackage[spanish]{babel} % Idioma del documento
@@ -11,7 +9,7 @@
 \usepackage{enumerate} % Modificar las enumeraciones
 \usepackage{multirow} % Para unir columnas y filas
 \usepackage{colortbl} % Color a las celdas de las tablas
-\usepackage[dvipsnames]{xcolor} % Poder definir colores. El [dvipsnames] agreaga nombres de colores
+\usepackage[dvipsnames]{xcolor} % Poder definir colores. El [dvipsnames] agrega nombres de colores
 \usepackage{longtable} % Para hacer tablas largas
 \usepackage{tabularx} % Para hacer tablas que completen el largo de la página
 \usepackage{array} % Según la wiki de tabular x, este paquete es necesario para que tabularx funcione bien. Además, agrega nuevas opciones a tabular
@@ -22,11 +20,12 @@
 \usepackage{amsmath} % Mejora la escritura matemática
 \usepackage{amsthm} % Ayuda a definir estructuras similares a teoremas
 \usepackage{amssymb} % Añade símbolos matemáticos extra
-\usepackage{titlesec} % Modificar los estidos de las secciones, subsecciones y subsubsecciones
+\usepackage{titlesec} % Modificar los estilos de las secciones, subsecciones y subsubsecciones
 \usepackage{multicol} % Añade distribución para hacer que todo el documento pueda ser a dos columnas.
+\usepackage{newfloat} % Crear nuevos entornos flotantes
 \usepackage{caption} % Modifica el estilo del caption
 \usepackage[hidelinks, breaklinks=true]{hyperref} % Linkear las citas y los urls. Hidelinks elimina los cuadros que se hacen a los lados. breaklinks=true se usa para que separe en líneas lo títulos muy largos
-\usepackage{booktabs} % Nuevas líenas para hacer tablas
+\usepackage{booktabs} % Nuevas líneas para hacer tablas
 \usepackage{fancyhdr} % Para modificar encabezados y pies de página
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Definir colores
@@ -47,18 +46,25 @@
 
 \titleformat*{\subparagraph}{\normalfont \normalsize \itshape \color{Micolor}}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Nuevos entornos
+
+\DeclareFloatingEnvironment[fileext=frm,placement={H}]{imagen} % Entorno imágenes
+\DeclareFloatingEnvironment[fileext=frm,placement={H}]{esquema} % Entorno esquema
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Modificación caption
 
 \captionsetup{font=small,justification=raggedright,singlelinecheck=false} % Modifica el estilo de los caption
 \captionsetup[figure]{name={Fig.},labelsep=period,labelfont={bf,it,color=Micolor},textfont=it} % Modifica el nombre de las figuras y su separador
-\captionsetup[table]{name={Tabla},labelsep=newline,labelfont={bf,color=Micolor}} % Modifica el nombre de las figuras y su separador
+\captionsetup[imagen]{name={Img.},labelsep=period,labelfont={bf,it,color=Micolor},textfont=it} % Modifica el nombre de las imágenes y su separador
+\captionsetup[esquema]{name={Esq.},labelsep=period,labelfont={bf,it,color=Micolor},textfont=it} % Modifica el nombre de los esquemas y su separador
+\captionsetup[table]{name={Tabla},labelsep=newline,labelfont={bf,color=Micolor}} % Modifica el nombre de las tablas y su separador
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Entornos tablas
 
 %\renewcommand\tabularxcolumn[1]{>{\Centering}p{#1}} % Hace que el X de tabularx ahora esté centrado y no alineado a la izquierda
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X} % Crea el tipo Y que es como el X pero alineado a la izquierda
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Configuración enpabezado y pie de página
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Configuración encabezado y pie de página
 
 \pagestyle{fancy} % Estilo encabezado y pie de página personalizado
 
@@ -78,7 +84,7 @@
 
 \newcommand{\rulefillfoot}{\leavevmode\leaders\hrule height .7ex width 1pt depth -0.6ex\hfill\kern0pt} % Se define un nuevo comando como \hrulefill pero a mitad del renglón
 \newcommand{\rulefillimg}{\leavevmode\leaders\hrule height 0.6pt\hfill\kern0pt} % Línea para las imágenes
-\newcommand{\linimg}{\noindent \textcolor{Micolor}{\rulefillimg}}
+\newcommand{\linhor}{\noindent \textcolor{Micolor}{\rulefillimg}}
 
 \newcommand{\cels}{$^{\circ}\text{C}$ }
 \newcommand{\csf}{Diagrama elavorado empleando ChemSketch Freeware 2021.}

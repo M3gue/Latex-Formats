@@ -1,4 +1,4 @@
-\documentclass[11pt,fleqn]{article} % Tipo de documento y tamaño. fleqn alínea las ecuaciones a la izquierda
+\documentclass[11pt,fleqn]{article} % Tipo de documento y tamaño. fleqn alinea las ecuaciones a la izquierda
 \input{MyConfig} % Cargar configuración de otro archivo
 
 \begin{document}
@@ -27,13 +27,13 @@
 		
 		\textit{$^{a}$ correo1, $^{b}$ correo2}
 		
-		\linimg % Hace una línea horizontal
+		\linhor % Hace una línea horizontal
 		
 		\textcolor{Micolor}{\textbf{Resumen:}} Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.  
 	
 		\textcolor{Micolor}{\textbf{Palabras clave:}} \textit{Palabra 1, palabra 2, palabra 3}
 		
-		\linimg
+		\linhor
 	\end{small}
 	
 	\setlength{\columnsep}{0.63cm} % Establece el espacio entre columnas
@@ -72,16 +72,25 @@
 		
 		\section{Sección Experimental} 
 		
-		Figura \ref{Montaje_exp} y tabla \ref{Tabla_1}.
+		Imagen \ref{Montaje_exp}, esquema \ref{Esquema_1} y tabla \ref{Tabla_1}.
 		
-		\linimg
-		\begin{figure}[H]
+		\linhor % Hace una línea horizontal
+		\begin{imagen}
 			\centering
 			\includegraphics[scale=0.05]{Imagenes/Montaje.png}
 			\caption{Montaje experimental} 
 			\label{Montaje_exp}	
-			\linimg
-		\end{figure}
+			\linhor
+		\end{imagen}
+		
+		\linhor 
+		\begin{esquema}
+			\centering
+			\includegraphics[scale=0.2]{Imagenes/Esquema.jpg}
+			\caption{Montaje experimental} 
+			\label{Esquema_1}	
+			\linhor
+		\end{esquema}
 				
 		\section{Resultados y discusión}
 				
